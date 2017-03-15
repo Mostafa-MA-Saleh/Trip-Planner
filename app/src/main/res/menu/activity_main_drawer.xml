@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_trips"
+            android:icon="@android:drawable/ic_menu_mapmode"
+            android:title="@string/trips" />
+        <item
+            android:id="@+id/nav_previous_trips"
+            android:icon="@android:drawable/ic_menu_myplaces"
+            android:title="@string/finished_trips" />
+    </group>
+        <item
+            android:id="@+id/nav_stats"
+            android:icon="@android:drawable/ic_menu_recent_history"
+            android:title="@string/trips_history" />
+        <item
+            android:id="@+id/nav_sign_out"
+            android:icon="@android:drawable/ic_menu_close_clear_cancel"
+            android:title="@string/sign_out" />
+
+        <item
+            android:checkable="false"
+            android:id="@+id/nav_about"
+            android:icon="@android:drawable/ic_menu_info_details"
+            android:title="@string/about" />
+
+</menu>

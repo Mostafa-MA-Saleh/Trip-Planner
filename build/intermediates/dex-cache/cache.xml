@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_738a1b401f572a653faa8d6dab1e526779ae9fae\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8a63942cf03c0480c8fbaf1fe647db2578f0638f">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_79774aa9fc28cd0c0a112cac520e4d13f4bd0e63\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\libs\adcolony.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="25382369823b07e382c84b28144b24856208c48b">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\transforms\dex\debug\folders\1000\2\adcolony_026ab60ededd40145cdcdf3aa3774ced0e16a806\classes.dex" />
+    </item>
+
+</items>

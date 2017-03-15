@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#007ee5</color>
+    <color name="colorPrimaryDark">#0476d3</color>
+    <color name="colorAccent">#3770cc</color>
+
+    <color name="darkest_pink">#F06292</color>
+    <color name="dark_pink">#e65e8b</color>
+    <color name="light_pink">#FCE4EC</color>
+
+    <color name="black_overlay">#66000000</color>
+
+    <color name="blue_pressed">#6387d3</color>
+    <color name="blue_normal">#3770cc</color>
+
+    <color name="white_pressed">#DDDDDD</color>
+    <color name="white_normal">#FFFFFF</color>
+
+    <color name="really_light_blue">#50e6f2ff</color>
+
+    <color name="cast_intro_overlay_background_color">#CC000000</color>
+
+</resources>

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="adcolony">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/libs/adcolony.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

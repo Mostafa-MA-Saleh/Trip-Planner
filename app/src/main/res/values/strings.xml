@@ -1,0 +1,123 @@
+<resources>
+    <string name="app_name">Trip Planner</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="title_activity_trip">New Trip</string>
+    <string name="title_activity_trip_details">TripDetailsActivity</string>
+    <string name="sign_up_now">New here? Sign up now.</string>
+    <string name="sign_in">Sign In</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="application_logo">Application Logo</string>
+    <string name="application_subtitle">Plan Away</string>
+    <string name="start_address">Start Address</string>
+    <string name="destination">Destination</string>
+    <string name="date_and_time">Date and Time</string>
+    <string name="notes">Notes</string>
+    <string name="one_way">One Way</string>
+    <string name="round_trip">Round Trip</string>
+    <string name="user_full_name">Mostafa Saleh</string>
+    <string name="user_email">Mostafa.MA.Saleh@gmail.com</string>
+    <string name="settings">Settings</string>
+    <string name="profile_photo">Profile Photo</string>
+    <string name="trips">Trips</string>
+    <string name="finished_trips">Finished Trips</string>
+    <string name="trips_history">Trips History</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="about">About</string>
+    <string name="start">Start</string>
+    <string name="logo_text">Logo Text</string>
+    <string name="done">Done</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="full_name">Full Name</string>
+    <string name="error_password_match">Passwords didn\'t match</string>
+    <string name="duration">Duration:</string>
+    <string name="notes_header_text">\nNotes:</string>
+    <string name="changelog">
+        Changelog:\n\n
+        \tv7.5.2:\n
+        \t\t-Added a progress dialog while loading trips from the database.\n
+        \t\t-Fixed a bug that cause the app to sometimes crash after a fresh install.\n\n
+        \tv7.5.0:\n
+        \t\t-The app now contains ads.\n
+        \t\t-Added the option to watch a video ad to remove ads for certain time.\n
+        \t\t-Added a progress dialog for signing in and signing up operations.\n
+        \t\t-Updated Crashlytics to 2.6.7.\n\n
+        \tv7.2.0:\n
+        \t\t-Minor bug fixes.\n
+        \t\t-Minor design changes.\n
+        \t\t-Implemented Firebase RemoteConfig to change the app theme.\n\n
+        \tv7.0.0:\n
+        \t\t-Moved to Firebase Database instead of SQLite.\n
+        \t\t-Fixed a bug that caused alarm to still go off when the user was signed out.\n
+        \t\t-Other minor bug fixes.\n\n
+        \tv6.2.0:\n
+        \t\t-Minor design changes.\n
+        \t\t-Added the option to sign in with a Facebook account.\n\n
+        \tv6.1.0:\n
+        \t\t-Redesigned splash screen.\n
+        \t\t-Redesigned app icon.\n\n
+        \tv6.0.0:\n
+        \t\t-Raised the required Google Play Services version to 10.2.0 again.\n
+        \t\t-Now using Firebase for authentication.\n
+        \t\t-Added the option to sign in with a Google account.\n\n
+        \tv5.0.0:\n
+        \t\t-Lowered the required Google Play Services version to 9.8.77.\n
+        \t\t-Fixed a major bug which caused the app to crash while trying to show alarm dialog on Android 6.0+.\n\n
+        \tv4.5.2:\n
+        \t\t-Fixed a bug which caused the app to crash instead of playing the alarm tone on Huawei devices.\n\n
+        \tv4.5.1:\n
+        \t\t-Fixed a bug which caused the app to crash if map history was opened while trips list is empty.\n\n
+        \tv4.5.0:\n
+        \t\t-Fixed a bug which caused alarms not to work if the user rebooted the device.\n\n
+        \tv4.1.1:\n
+        \t\t-Added a delay before showing the tooltip with AirView.\n
+        \t\t-Fixed a bug that caused the alarm to go off as soon as the user presses save if the trip time was older than current system time.\n\n
+        \tv4.0.0:\n
+        \t\t-Added alarm functionality.\n
+        \t\t-Added Crashlytics by fabric.io.\n\n
+        \tv3.5.1:\n
+        \t\t-Minor bug fixes.\n\n
+        \tv3.5.0:\n
+        \t\t-Added a map to show all trips.\n\n
+        \tv3.2.0:\n
+        \t\t-Added support for AirView on Samsung devices.\n\n
+        \tv3.1.0:\n
+        \t\t-Separated the duration from trip details.\n\n
+        \tv3.0.0:\n
+        \t\t-Added duration to trip details.\n
+        \t\t-Added Start Trip button.\n\n
+        \tv2.9.0:\n
+        \t\t-Redesigned App theme.\n
+        \t\t-Added Settings panel.\n\n
+        \tv2.5.0:\n
+        \t\t-Added Registration panel\n
+        \t\t-Passwords are now encrypted.\n\n
+        \tv2.1.0:\n
+        \t\t-Minor bug fixes.\n\n
+        \tv2.0.0:\n
+        \t\t-Integrated Database for storage.\n\n
+        \tv1.0.0:\n
+        \t\t-Initial release.
+    </string>
+    <string name="reset_all_data">Reset All Data</string>
+    <string name="sign_in_with_google">Google</string>
+    <string name="web_client_id">674054213587-cj3jdn67fs5qr7pkt970qlitacrfq2rn.apps.googleusercontent.com</string>
+    <string name="facebook_app_id">1427574923960459</string>
+    <string name="or">Or Sign In With</string>
+    <string name="sign_in_with_facebook">Facebook</string>
+    <string name="cancel">Cancel</string>
+    <string name="later">Later</string>
+    <string name="video_ad_unit_id">ca-app-pub-7136716145062171/7192956641</string>
+    <string name="banner_ad_unit_id">ca-app-pub-7136716145062171/6634553440</string>
+</resources>
