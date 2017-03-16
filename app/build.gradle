@@ -18,6 +18,14 @@ repositories {
 }
 
 android {
+    signingConfigs {
+        release {
+            keyAlias 'defalt_key'
+            keyPassword 'Maxi1Rules2All!'
+            storeFile file('C:/Users/Mostafa Saleh/Documents/Android/keystore.jks')
+            storePassword 'Maxi1Rules2All!'
+        }
+    }
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
@@ -27,12 +35,15 @@ android {
         versionCode 752
         versionName "7.5.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.release
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    productFlavors {
     }
 }
 
@@ -41,32 +52,26 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-
     compile('com.crashlytics.sdk.android:crashlytics:2.6.7@aar') {
         transitive = true;
     }
-
     compile 'com.android.support:design:25.0.0'
     compile 'com.android.support:support-v4:25.0.0'
     compile 'com.android.support:appcompat-v7:25.0.0'
     compile 'com.android.support:recyclerview-v7:25.0.0'
     compile 'com.android.support:support-annotations:25.0.0'
-
     compile 'com.google.android.gms:play-services-places:10.2.0'
     compile 'com.google.android.gms:play-services-maps:10.2.0'
     compile 'com.google.android.gms:play-services-auth:10.2.0'
-
     compile 'com.google.firebase:firebase-core:10.2.0'
     compile 'com.google.firebase:firebase-auth:10.2.0'
     compile 'com.google.firebase:firebase-database:10.2.0'
     compile 'com.google.firebase:firebase-config:10.2.0'
     compile 'com.google.firebase:firebase-ads:10.2.0'
-
     compile 'com.github.vihtarb:tooltip:0.1.9'
     compile 'com.github.ViksaaSkool:AwesomeSplash:v1.0.0'
     compile 'com.facebook.android:facebook-android-sdk:4.20.0'
     compile 'com.chauthai.swipereveallayout:swipe-reveal-layout:1.4.0'
-
     testCompile 'junit:junit:4.12'
 }
 
