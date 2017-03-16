@@ -24,8 +24,8 @@ android {
         applicationId "com.iti.tripplanner"
         minSdkVersion 21
         targetSdkVersion 25
-        versionCode 752
-        versionName "7.5.2"
+        versionCode 753
+        versionName "7.5.3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

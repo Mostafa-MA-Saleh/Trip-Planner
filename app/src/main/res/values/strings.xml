@@ -45,7 +45,7 @@
     <string name="notes_header_text">\nNotes:</string>
     <string name="changelog">
         Changelog:\n\n
-        \tv7.5.2:\n
+        \tv7.5.3:\n
         \t\t-Added a progress dialog while loading trips from the database.\n
         \t\t-Fixed a bug that cause the app to sometimes crash after a fresh install.\n\n
         \tv7.5.0:\n
