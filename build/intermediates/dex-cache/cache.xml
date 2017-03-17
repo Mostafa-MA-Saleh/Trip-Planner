@@ -11,13 +11,13 @@
         <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\bolts-tasks-1.4.0_d48472f603a7018c3c64eafa1d8646285bad848b.jar" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\Users\Mostafa Saleh\.android\build-cache\980786236ec769bde01a133444b08e161fe1b7ee\output\jars\classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\0650aea9a22ab0af4d7171de828dd4d760cbcc48\output\jars\libs\internal_impl-25.0.0.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="263c1c941f603469ecbaf8745f7b2d18ae85c5c0">
-        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\classes_26a6b99d5843c823056df509e470da9bcb85c198.jar" />
+        sha1="3b61a70884adaf0be3fc06c70c801e3e6df13133">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.0_6320e5beb2c00231f919ecf515f142b169728eea\classes.dex" />
     </item>
     <item
         is-multidex="false"
@@ -29,6 +29,15 @@
         <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\classes_3df75dbbaba89a934b03c0bedb050dfaad8da4c4.jar" />
     </item>
     <item
+        is-multidex="true"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\9fbdf84a236f296ce159c5594873cdae889fc365\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="76fb65a4b41ea42dab8a1310ed772a2420c96b52">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_67b765f548bb89a446e5c5bb8557a057077978e9\classes.dex" />
+    </item>
+    <item
         is-multidex="false"
         jar="C:\Users\Mostafa Saleh\.android\build-cache\f0f861d696f6d634fa45e603951855d508c83fe2\output\jars\classes.jar"
         jumboMode="false"
@@ -36,15 +45,6 @@
         revision="25.0.2"
         sha1="26384be22ddc74cfe197ebda9edbc7d1fd8bd537">
         <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\classes_dfb189e2fa9b7d17bdd0d861b193d6e6ae05441c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Mostafa Saleh\.android\build-cache\c1b8f3812675186da02b7575e50f738601879cc5\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="844efef744581e604ea77683555271ebbd61d871">
-        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\classes_4913166a7a670d8d0d1715942b49fd4a4c6ea274.jar" />
     </item>
     <item
         is-multidex="false"
@@ -75,57 +75,12 @@
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Mostafa Saleh\.android\build-cache\930cac4f301c7e5eb9020eef6f4c3d3ad5912ce2\output\jars\libs\internal_impl-25.0.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="ee5faf4dee5b6a4364bf51587871047dde7c703a">
-        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.0_b634ae9b38bd3beaebf5fbf4486528f90e2640bf.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Mostafa Saleh\.android\build-cache\45a1095b1998654e9022056012d3c6f07f946c7a\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="75b1f366ff0bbc78f8b1f7cf0dc82e7c53afef6a">
-        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\classes_62ce21fe369dc9d998921856f830e9c1df54fbe9.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Mostafa Saleh\.android\build-cache\fcf32d46459f8ed70efb170bd19c0664a47c0910\output\jars\libs\internal_impl-25.0.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="665d21a8a069c96b4d9e8b434f5096d865b4e261">
-        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.0_a1f04a9884bdc36080e8524bb5439fb76e832aff.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="C:\Users\Mostafa Saleh\.android\build-cache\e49d79ed94f83f8f1717259c244d2a776da35bfd\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="94ba691efc31bf53264db0716d9c9ec03843ea31">
         <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\classes_0f29b1dc092b475a31f90229aa96dccb11ed7138.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\libs\adcolony.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="25382369823b07e382c84b28144b24856208c48b">
-        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\adcolony_026ab60ededd40145cdcdf3aa3774ced0e16a806.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Android\SDK\extras\android\m2repository\com\android\support\support-annotations\25.0.0\support-annotations-25.0.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="a22d2cc94da87b254451fa8ed28afc30b4653773">
-        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\support-annotations-25.0.0_ec257b0cab7fa6733d63757655466d7c79045f42.jar" />
     </item>
     <item
         is-multidex="true"
@@ -144,15 +99,6 @@
         revision="25.0.2"
         sha1="5e497d60f0cb6ce87c458ac5420a46d0fed49bd0">
         <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\classes_1cf627f4fcdc44c91e1891495c8a666862455793.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Mostafa Saleh\.android\build-cache\369ec26755fcd804289ec062964fad76af22aae9\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="8c8243677105d9c78cfbf553b55e256b3d4bea39">
-        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\classes_0ecea0365ef59d71bc22b75539cdc0827e970d16.jar" />
     </item>
     <item
         is-multidex="false"
@@ -183,15 +129,6 @@
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Mostafa Saleh\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-applinks\1.4.0\8ad21bf21784dacce5f2043afb97218cc377e835\bolts-applinks-1.4.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="8ad21bf21784dacce5f2043afb97218cc377e835">
-        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\bolts-applinks-1.4.0_fc826199ce5518975dd12002e28bebf6e778c000.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="C:\Users\Mostafa Saleh\.android\build-cache\e075269d79c361f42baeba246a12b2341f9667c3\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
@@ -219,21 +156,30 @@
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Mostafa Saleh\.android\build-cache\fcf32d46459f8ed70efb170bd19c0664a47c0910\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="76fb65a4b41ea42dab8a1310ed772a2420c96b52">
-        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\classes_b87a919874d85d84e589fb0989ffc9e43154305c.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="C:\Users\Mostafa Saleh\.android\build-cache\e88ec56bfd94923427cdbf69e7a89c039b02d320\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="d29714cc76b38157e3cbd034c66e1ec808eb4c19">
         <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\classes_a73bbe2ff9c6541e15f99a6c4a08d4704361135c.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\114829e96e5aee069e1c7db3a001c21536e2e541\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d29714cc76b38157e3cbd034c66e1ec808eb4c19">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_995559fafe46db7a247a8ffd918514863a8ebca8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\b502907bb42ce8ad2af937af3366f20602ff239b\output\jars\libs\internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.0_f72f0b24fff504cb188bab79cfec55caedfe90b6\classes.dex" />
     </item>
     <item
         is-multidex="false"
@@ -246,21 +192,39 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\9fbdf84a236f296ce159c5594873cdae889fc365\output\jars\libs\internal_impl-25.0.0.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="8a63942cf03c0480c8fbaf1fe647db2578f0638f">
-        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_79774aa9fc28cd0c0a112cac520e4d13f4bd0e63\classes.dex" />
+        sha1="665d21a8a069c96b4d9e8b434f5096d865b4e261">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.0_8dc62781bbf3a4958fbb6e473a3466485e97f51c\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\Users\Mostafa Saleh\.android\build-cache\deadac5ab511d7f3136bf6119b7ef64218946475\output\jars\classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\c8eb45d70580511cde07556778f1fc36f29cc371\output\jars\classes.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="8bc45ce1f63d1a391fd38b32a201be5a42f9c95d">
-        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\classes_885cce58c61f0b98a7ba74582cdd541c8c2cfe3b.jar" />
+        sha1="26384be22ddc74cfe197ebda9edbc7d1fd8bd537">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_faf9de326470b30afe597d22e942139f9674bd6f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\895182d502ba335a480cf6932c333cb932da1756\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="53a420cd4f49274db6bd43475f8006ba67ef6bbd">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_55ba79d16dea1521b0cebdd3d09914438a60341d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\d250af3bbc710bb2054cec05a4e14a3f1d868e3f\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="07daa0b6e1d455c82a38422ffe287c18823d339a">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_388aafafc5b0e194ac387cf7e89ecedd9e1833fa\classes.dex" />
     </item>
     <item
         is-multidex="false"
@@ -270,15 +234,6 @@
         revision="25.0.2"
         sha1="6da05b7498da036b5b37c3beb861cd2060929dcd">
         <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\classes_e7d7123f01369904f3a61127e27c0633bbbd4b60.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Mostafa Saleh\.android\build-cache\e79bf0a0e7f2405b95cefcd518904ef6a4292579\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="53a420cd4f49274db6bd43475f8006ba67ef6bbd">
-        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\classes_597bce5b049bf99eb9976aba1291c1a2a9954837.jar" />
     </item>
     <item
         is-multidex="false"
@@ -300,6 +255,15 @@
     </item>
     <item
         is-multidex="true"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\94b393b259d9915142c145fa71c0f2028e63b05c\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="5e497d60f0cb6ce87c458ac5420a46d0fed49bd0">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_823b649ad89e462636720ff9e097808b5182432c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
@@ -318,12 +282,237 @@
     </item>
     <item
         is-multidex="false"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\1a7a14f9a41d9b26f6baa45bf1143a9b25fa170f\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="654b294d429b56fd18392f2b68ad79954f431f8e">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\classes_f3f42cca13eb193969f67e7d8bdb5cfcc7746e51.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\b502907bb42ce8ad2af937af3366f20602ff239b\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="26674000177e45447a0326a6ad84612761199a13">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b57e7a298719976fb82dcb928aecb86e13fa9791\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\e075269d79c361f42baeba246a12b2341f9667c3\output\jars\libs\internal_impl-25.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.0_02145a1a5b3a571d2eed977026ffc1dab7cc4a8e.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\9ef07aca46fe9d9254eb5456722c4a3e6bde0c1d\output\jars\libs\internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f2e3b9bc1ec25f652e8007ce7774c991e38f6a00">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.0_76fda356acaf132e7eeb76bd8c65a14fe837a824\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\980786236ec769bde01a133444b08e161fe1b7ee\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="263c1c941f603469ecbaf8745f7b2d18ae85c5c0">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\classes_26a6b99d5843c823056df509e470da9bcb85c198.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\84f8901e847a18f212a7de2c607868dbe59bc8d8\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8bc45ce1f63d1a391fd38b32a201be5a42f9c95d">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_5880a8bc1473247f19d5e5a5c4e13702d28df848\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\c1b8f3812675186da02b7575e50f738601879cc5\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="844efef744581e604ea77683555271ebbd61d871">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\classes_4913166a7a670d8d0d1715942b49fd4a4c6ea274.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\c685099b4fdb68ef80ad201c9fffd107ba84f8cf\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_747ee6aba0e18de3fe1407a8e76b9ad5a4be0afb\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\930cac4f301c7e5eb9020eef6f4c3d3ad5912ce2\output\jars\libs\internal_impl-25.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ee5faf4dee5b6a4364bf51587871047dde7c703a">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.0_b634ae9b38bd3beaebf5fbf4486528f90e2640bf.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\45a1095b1998654e9022056012d3c6f07f946c7a\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="75b1f366ff0bbc78f8b1f7cf0dc82e7c53afef6a">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\classes_62ce21fe369dc9d998921856f830e9c1df54fbe9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\fcf32d46459f8ed70efb170bd19c0664a47c0910\output\jars\libs\internal_impl-25.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="665d21a8a069c96b4d9e8b434f5096d865b4e261">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.0_a1f04a9884bdc36080e8524bb5439fb76e832aff.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\9ef07aca46fe9d9254eb5456722c4a3e6bde0c1d\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="75b1f366ff0bbc78f8b1f7cf0dc82e7c53afef6a">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_bc8f51bf11038b9f22cd5a46976dfd0da0e07fda\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\libs\adcolony.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="25382369823b07e382c84b28144b24856208c48b">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\adcolony_026ab60ededd40145cdcdf3aa3774ced0e16a806.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Android\SDK\extras\android\m2repository\com\android\support\support-annotations\25.0.0\support-annotations-25.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a22d2cc94da87b254451fa8ed28afc30b4653773">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\support-annotations-25.0.0_ec257b0cab7fa6733d63757655466d7c79045f42.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\0650aea9a22ab0af4d7171de828dd4d760cbcc48\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4ccbcda5c72027c7f7c14be9ff8640d9cb0d8da0">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_9f75b67130a3c69b8ed1311250c1b3cba155da7d\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\369ec26755fcd804289ec062964fad76af22aae9\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8c8243677105d9c78cfbf553b55e256b3d4bea39">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\classes_0ecea0365ef59d71bc22b75539cdc0827e970d16.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Mostafa Saleh\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-applinks\1.4.0\8ad21bf21784dacce5f2043afb97218cc377e835\bolts-applinks-1.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8ad21bf21784dacce5f2043afb97218cc377e835">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\bolts-applinks-1.4.0_fc826199ce5518975dd12002e28bebf6e778c000.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\9e5aae94467624c8cb3e5678acebcc434fc35407\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="94ba691efc31bf53264db0716d9c9ec03843ea31">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b75d7b5651ab3e2ac6ea21f915e2ae58a4365778\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\fcf32d46459f8ed70efb170bd19c0664a47c0910\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="76fb65a4b41ea42dab8a1310ed772a2420c96b52">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\classes_b87a919874d85d84e589fb0989ffc9e43154305c.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f596b8d34bb371cf09c52e5165246075e73e80b4">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_79774aa9fc28cd0c0a112cac520e4d13f4bd0e63\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\deadac5ab511d7f3136bf6119b7ef64218946475\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8bc45ce1f63d1a391fd38b32a201be5a42f9c95d">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\classes_885cce58c61f0b98a7ba74582cdd541c8c2cfe3b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\e79bf0a0e7f2405b95cefcd518904ef6a4292579\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="53a420cd4f49274db6bd43475f8006ba67ef6bbd">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\classes_597bce5b049bf99eb9976aba1291c1a2a9954837.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\d250af3bbc710bb2054cec05a4e14a3f1d868e3f\output\jars\libs\internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ee5faf4dee5b6a4364bf51587871047dde7c703a">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.0_0c4755f5fe164599d3a874e85c38ee897ab67487\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
         jar="C:\Users\Mostafa Saleh\.android\build-cache\355a99801482b7bcb2b470b7f76564f03b0a8f1e\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="09d89c0a8e2ba8d2fd5e7110d62bc6916d642567">
         <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\classes_fb46ecf997d09b17242708ba3e387e96c3989c23.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\5218f61765983ef59e8ba157f9227576a8931bc6\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8a372c4191f80489770a231f7be4820b204b886a">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_58aad646a4dded29067228025b79a37dd1e1306f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\ccfe8e7f8b404ad8c854fbe710e30661db7d7132\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0c6d948e6cb9ea6f535d175fb61ba2930719c0e9">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d9f156e08bb6ad0052448b573c5aa299f5a57cd4\classes.dex" />
     </item>
     <item
         is-multidex="false"
@@ -342,24 +531,6 @@
         revision="25.0.2"
         sha1="d7e947f993bf32a00fcb3078cdda8bb11c930afb">
         <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\classes_2bb4cdfb6c1c1447af09d1f6ad35671f77ca6fd2.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Mostafa Saleh\.android\build-cache\1a7a14f9a41d9b26f6baa45bf1143a9b25fa170f\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="654b294d429b56fd18392f2b68ad79954f431f8e">
-        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\classes_f3f42cca13eb193969f67e7d8bdb5cfcc7746e51.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Mostafa Saleh\.android\build-cache\e075269d79c361f42baeba246a12b2341f9667c3\output\jars\libs\internal_impl-25.0.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
-        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.0_02145a1a5b3a571d2eed977026ffc1dab7cc4a8e.jar" />
     </item>
     <item
         is-multidex="false"

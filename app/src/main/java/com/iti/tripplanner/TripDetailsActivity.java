@@ -1,7 +1,6 @@
 package com.iti.tripplanner;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -32,13 +31,11 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+@SuppressWarnings("ConstantConditions")
 public class TripDetailsActivity extends AppCompatActivity {
 
-    private TextView txtDetails;
     private TextView txtDuration;
-    private TextView txtNotes;
     private ProgressBar progDuration;
-    private URL url;
     private Trip mTrip;
     private String duration;
     private boolean mChanged;
@@ -55,9 +52,9 @@ public class TripDetailsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         duration = "";
         mTrip = getIntent().getParcelableExtra("Trip");
-        txtDetails = (TextView) findViewById(R.id.Details);
+        TextView txtDetails = (TextView) findViewById(R.id.Details);
         txtDuration = (TextView) findViewById(R.id.Duration);
-        txtNotes = (TextView) findViewById(R.id.Notes);
+        TextView txtNotes = (TextView) findViewById(R.id.Notes);
         progDuration = (ProgressBar) findViewById(R.id.DurationProgress);
 
         setTitle(mTrip.getName());
@@ -139,7 +136,7 @@ public class TripDetailsActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             try {
-                url = new URL("https://maps.googleapis.com/maps/api/directions/json?origin=" + params[0] + "&destination=" + params[1] + "&key=AIzaSyBdKV8BgBxsEiDjArDdRRPO4xXLFbcil3Y");
+                URL url = new URL("https://maps.googleapis.com/maps/api/directions/json?origin=" + params[0] + "&destination=" + params[1] + "&key=AIzaSyBdKV8BgBxsEiDjArDdRRPO4xXLFbcil3Y");
                 HttpURLConnection HttpConn = (HttpURLConnection) url.openConnection();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(HttpConn.getInputStream(), "UTF-8"), 8);
                 StringBuilder sb = new StringBuilder();

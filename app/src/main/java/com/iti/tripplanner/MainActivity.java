@@ -3,7 +3,6 @@ package com.iti.tripplanner;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -31,7 +30,6 @@ import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,6 +38,7 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 
 import java.util.ArrayList;
 
+@SuppressWarnings("ConstantConditions")
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 
@@ -125,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mCurrentTripsAdapter = new RecyclerAdapter(this);
         mPreviousTripsAdapter = new RecyclerAdapter(this);
         if (savedInstanceState == null) {
-           final Dialog mProgressDialog = new Dialog(this);
+            final Dialog mProgressDialog = new Dialog(this);
             mProgressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             mProgressDialog.setContentView(new ProgressBar(this));
             mProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -160,17 +159,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     });
         } else {
             ArrayList<Trip> trips = savedInstanceState.getParcelableArrayList("CurrentTrips");
-            assert trips != null;
             for (Trip trip : trips) {
                 mCurrentTripsAdapter.add(trip, mCurrentTripsAdapter.getItemCount());
             }
             trips = savedInstanceState.getParcelableArrayList("PreviousTrips");
-            assert trips != null;
             for (Trip trip : trips) {
                 mPreviousTripsAdapter.add(trip, mPreviousTripsAdapter.getItemCount());
             }
-            assert getSupportActionBar() != null;
-            assert getSupportActionBar().getSubtitle() != null;
             getSupportActionBar().setSubtitle(savedInstanceState.getString("Subtitle", ""));
             mTripsList.setAdapter(getSupportActionBar().getSubtitle().equals("Finished Trips") ? mPreviousTripsAdapter : mCurrentTripsAdapter);
         }
@@ -189,7 +184,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onResume() {
         super.onResume();
-        if(mAdView != null) {
+        if (mAdView != null) {
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mFloatingActionButton.getLayoutParams();
             if (!SettingsActivity.mPremium) {
                 mAdView.setVisibility(View.VISIBLE);
@@ -208,7 +203,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onSaveInstanceState(outState);
         outState.putParcelableArrayList("CurrentTrips", mCurrentTripsAdapter.getAllElements());
         outState.putParcelableArrayList("PreviousTrips", mPreviousTripsAdapter.getAllElements());
-        assert getSupportActionBar() != null;
         if (getSupportActionBar().getSubtitle() != null)
             outState.putString("Subtitle", getSupportActionBar().getSubtitle().toString());
     }
@@ -218,7 +212,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         mFloatingActionButton.setVisibility(View.VISIBLE);
-        assert getSupportActionBar() != null;
         if (id == R.id.nav_sign_out) {
             FirebaseAuth.getInstance().signOut();
             for (Trip trip : mCurrentTripsAdapter.getAllElements())

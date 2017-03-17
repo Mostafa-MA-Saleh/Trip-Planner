@@ -9,15 +9,14 @@ import android.os.Parcelable;
 import android.support.annotation.Keep;
 
 import com.google.android.gms.maps.model.LatLng;
-import com.google.firebase.database.IgnoreExtraProperties;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+@SuppressWarnings("WeakerAccess")
 @Keep
-@IgnoreExtraProperties
 class Trip implements Parcelable {
 
     public static final Parcelable.Creator<Trip> CREATOR = new Parcelable.Creator<Trip>() {
@@ -43,7 +42,7 @@ class Trip implements Parcelable {
     private boolean mRoundTrip;
     private String mNotes;
 
-    Trip() {
+    public Trip() {
         mName = "";
         mStartingString = "";
         mDestinationString = "";
@@ -66,54 +65,54 @@ class Trip implements Parcelable {
         mNotes = in.readString();
     }
 
-    int get_id() {
+    public int get_id() {
         return _id;
     }
 
-    void set_id(int _id) {
+    public void set_id(int _id) {
         this._id = _id;
     }
 
-    String getName() {
+    public String getName() {
         return mName;
     }
 
-    void setName(String name) {
+    public void setName(String name) {
         mName = name;
     }
 
-    String getStartString() {
+    public String getStartString() {
         return mStartingString;
     }
 
-    void setStartString(String startString) {
+    public void setStartString(String startString) {
         this.mStartingString = startString;
     }
 
-    String getDestinationString() {
+    public String getDestinationString() {
         return mDestinationString;
     }
 
-    void setDestinationString(String destinationString) {
+    public void setDestinationString(String destinationString) {
         this.mDestinationString = destinationString;
     }
 
-    String getStartCoordinates() {
+    public String getStartCoordinates() {
         return mStartCoordinates.latitude + "," + mStartCoordinates.longitude;
     }
 
-    void setStartCoordinates(String mStartCoordinates) {
+    public void setStartCoordinates(String mStartCoordinates) {
         String s[] = mStartCoordinates.split(",");
         double lat = Double.parseDouble(s[0]);
         double lng = Double.parseDouble(s[1]);
         this.mStartCoordinates = new LatLng(lat, lng);
     }
 
-    String getDestinationCoordinates() {
+    public String getDestinationCoordinates() {
         return mDestinationCoordinates.latitude + "," + mDestinationCoordinates.longitude;
     }
 
-    void setDestinationCoordinates(String mDestinationCoordinates) {
+    public void setDestinationCoordinates(String mDestinationCoordinates) {
         String s[] = mDestinationCoordinates.split(",");
         double lat = Double.parseDouble(s[0]);
         double lng = Double.parseDouble(s[1]);
@@ -126,55 +125,56 @@ class Trip implements Parcelable {
         return PendingIntent.getActivity(context, get_id(), intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
-    void setAlarm(Context context) {
+    public void setAlarm(Context context) {
         AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         am.setExact(AlarmManager.RTC_WAKEUP, getTimeInMillis(), createPendingIntent(context));
     }
 
-    void cancelAlarm(Context context) {
+    public void cancelAlarm(Context context) {
         AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         am.cancel(createPendingIntent(context));
     }
 
-    long getTimeInMillis() {
+    public long getTimeInMillis() {
         Date date = null;
         try {
             date = new SimpleDateFormat("EEEE, MMM dd, yyyy 'At' hh':'mm a", Locale.getDefault()).parse(mTime);
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        assert date != null;
         return date.getTime();
     }
 
-    String getTime() {
+    public String getTime() {
         return mTime;
     }
 
-    void setTime(String time) {
+    public void setTime(String time) {
         this.mTime = time;
     }
 
-    boolean isDone() {
+    public boolean isDone() {
         return mDone;
     }
 
-    void setDone(boolean done) {
+    public void setDone(boolean done) {
         this.mDone = done;
     }
 
-    boolean isRoundTrip() {
+    public boolean isRoundTrip() {
         return mRoundTrip;
     }
 
-    void setRoundTrip(boolean roundTrip) {
+    public void setRoundTrip(boolean roundTrip) {
         this.mRoundTrip = roundTrip;
     }
 
-    String getNotes() {
+    public String getNotes() {
         return mNotes;
     }
 
-    void setNotes(String notes) {
+    public void setNotes(String notes) {
         this.mNotes = notes;
     }
 
@@ -195,28 +195,5 @@ class Trip implements Parcelable {
         dest.writeByte(mDone ? (byte) 1 : (byte) 0);
         dest.writeByte(mRoundTrip ? (byte) 1 : (byte) 0);
         dest.writeString(mNotes);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Trip trip = (Trip) o;
-
-        if (mDone != trip.mDone) return false;
-        if (mRoundTrip != trip.mRoundTrip) return false;
-        if (mName != null ? !mName.equals(trip.mName) : trip.mName != null) return false;
-        if (mStartingString != null ? !mStartingString.equals(trip.mStartingString) : trip.mStartingString != null)
-            return false;
-        if (mDestinationString != null ? !mDestinationString.equals(trip.mDestinationString) : trip.mDestinationString != null)
-            return false;
-        if (mStartCoordinates != null ? !mStartCoordinates.equals(trip.mStartCoordinates) : trip.mStartCoordinates != null)
-            return false;
-        if (mDestinationCoordinates != null ? !mDestinationCoordinates.equals(trip.mDestinationCoordinates) : trip.mDestinationCoordinates != null)
-            return false;
-        if (mTime != null ? !mTime.equals(trip.mTime) : trip.mTime != null) return false;
-        return mNotes != null ? mNotes.equals(trip.mNotes) : trip.mNotes == null;
-
     }
 }

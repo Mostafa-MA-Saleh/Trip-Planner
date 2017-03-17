@@ -3,9 +3,7 @@ package com.iti.tripplanner;
 import android.app.ActivityManager;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SwitchCompat;
@@ -13,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.MobileAds;
@@ -28,6 +25,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     private RewardedVideoAd mAd;
     private ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +57,7 @@ public class SettingsActivity extends AppCompatActivity {
         swtPremium.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
-                if (isChecked){
+                if (isChecked) {
                     buttonView.setChecked(false);
                     new AlertDialog.Builder(SettingsActivity.this)
                             .setMessage("To enable premium features until the next app restart you'll have to watch a short video!")
@@ -83,7 +81,7 @@ public class SettingsActivity extends AppCompatActivity {
         });
     }
 
-    void initVideoAd(final CompoundButton buttonView){
+    void initVideoAd(final CompoundButton buttonView) {
         mAd = MobileAds.getRewardedVideoAdInstance(SettingsActivity.this);
         mAd.loadAd(getString(R.string.video_ad_unit_id), new AdRequest.Builder().build());
         mAd.setRewardedVideoAdListener(new RewardedVideoAdListener() {
