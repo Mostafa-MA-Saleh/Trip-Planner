@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="@dimen/activity_vertical_margin"
     android:layout_marginEnd="@dimen/activity_horizontal_margin"
     android:layout_marginStart="@dimen/activity_horizontal_margin"
-    android:layout_marginBottom="@dimen/activity_vertical_margin"
     android:layout_marginTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.iti.tripplanner.TripDetailsActivity"
@@ -17,30 +17,50 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/Details"
+            android:id="@+id/Start"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:textIsSelectable="false"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/Destination"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/Start"
+            android:layout_marginTop="20dp"
+            android:textIsSelectable="false"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/Time"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/Destination"
+            android:layout_marginTop="20dp"
+            android:textIsSelectable="false"
             android:textSize="16sp" />
 
         <TextView
             android:id="@+id/Duration"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_below="@id/Details"
-            android:text="@string/duration"
-            android:textStyle="bold"
+            android:layout_below="@id/Time"
             android:layout_marginTop="20dp"
-            android:textSize="16sp" />
+            android:text="@string/duration"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <ProgressBar
+            android:id="@+id/DurationProgress"
             style="?android:attr/progressBarStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_toEndOf="@+id/Duration"
-            android:layout_alignTop="@id/Duration"
             android:layout_alignBottom="@id/Duration"
-            android:id="@+id/DurationProgress" />
+            android:layout_alignTop="@id/Duration"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@+id/Duration" />
 
         <TextView
             android:id="@+id/NotesHeader"
@@ -48,17 +68,18 @@
             android:layout_height="match_parent"
             android:layout_below="@id/Duration"
             android:text="@string/notes_header_text"
-            android:textStyle="bold"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
 
         <TextView
             android:id="@+id/Notes"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="@dimen/activity_horizontal_margin"
             android:layout_below="@id/NotesHeader"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="5dp"
+            android:textIsSelectable="false"
             android:textSize="16sp" />
 
     </RelativeLayout>

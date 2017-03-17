@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SwitchCompat;
 import android.support.v7.widget.Toolbar;
+import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -19,7 +20,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -43,16 +43,15 @@ public class TripDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (FirebaseRemoteConfig.getInstance().getBoolean("AltTheme")) {
-            setTheme(R.style.Girly_NoActionBar);
-        }
         setContentView(R.layout.activity_trip_details);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         duration = "";
         mTrip = getIntent().getParcelableExtra("Trip");
-        TextView txtDetails = (TextView) findViewById(R.id.Details);
+        TextView txtStart = (TextView) findViewById(R.id.Start);
+        TextView txtDestination = (TextView) findViewById(R.id.Destination);
+        TextView txtTime = (TextView) findViewById(R.id.Time);
         txtDuration = (TextView) findViewById(R.id.Duration);
         TextView txtNotes = (TextView) findViewById(R.id.Notes);
         progDuration = (ProgressBar) findViewById(R.id.DurationProgress);
@@ -65,15 +64,22 @@ public class TripDetailsActivity extends AppCompatActivity {
         } else {
             new DurationTask().execute(startCoordinates, destCoordinates);
         }
-        SpannableStringBuilder text = new SpannableStringBuilder()
-                .append("Start: ", new StyleSpan(Typeface.BOLD), Spanned.SPAN_COMPOSING)
-                .append(mTrip.getStartString())
-                .append("\n\nDestination: ", new StyleSpan(Typeface.BOLD), Spanned.SPAN_COMPOSING)
-                .append(mTrip.getDestinationString())
-                .append("\n\nTime: ", new StyleSpan(Typeface.BOLD), Spanned.SPAN_COMPOSING)
-                .append(mTrip.getTime());
-        txtDetails.setText(text, TextView.BufferType.SPANNABLE);
-        txtNotes.setText(mTrip.getNotes(), TextView.BufferType.SPANNABLE);
+
+        StyleSpan boldSpan = new StyleSpan(Typeface.BOLD);
+
+        SpannableString spannableString = new SpannableString("Start: " + mTrip.getStartString());
+        spannableString.setSpan(boldSpan, 0, 7, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        txtStart.setText(spannableString, TextView.BufferType.SPANNABLE);
+
+        spannableString = new SpannableString("Destination: " + mTrip.getDestinationString());
+        spannableString.setSpan(boldSpan, 0, 12, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        txtDestination.setText(spannableString, TextView.BufferType.SPANNABLE);
+
+        spannableString = new SpannableString("Time: " + mTrip.getTime());
+        spannableString.setSpan(boldSpan, 0, 5, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        txtTime.setText(spannableString, TextView.BufferType.SPANNABLE);
+
+        txtNotes.setText(mTrip.getNotes());
     }
 
     @Override
@@ -160,8 +166,11 @@ public class TripDetailsActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             SpannableStringBuilder text = new SpannableStringBuilder()
-                    .append("Duration: ", new StyleSpan(Typeface.BOLD), Spanned.SPAN_COMPOSING)
-                    .append(s, new StyleSpan(Typeface.NORMAL), Spanned.SPAN_COMPOSING);
+                    .append("Duration: ")
+                    .append(s);
+
+            text.setSpan(new StyleSpan(Typeface.BOLD), 0, 9, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
             progDuration.setVisibility(View.INVISIBLE);
             txtDuration.setTypeface(Typeface.DEFAULT, Typeface.NORMAL);
             txtDuration.setText(text, TextView.BufferType.SPANNABLE);

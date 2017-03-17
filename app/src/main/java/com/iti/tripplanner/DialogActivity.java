@@ -6,10 +6,12 @@ import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.AudioAttributes;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
@@ -25,6 +27,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
+@SuppressWarnings("ConstantConditions")
 public class DialogActivity extends AppCompatActivity {
 
     private final static int ALARM_NOTIFICATION_ID = 8000;
@@ -62,13 +65,22 @@ public class DialogActivity extends AppCompatActivity {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             mTrip = dataSnapshot.getValue(Trip.class);
-                            if (android.os.Build.MANUFACTURER.toLowerCase().equals("huawei")) {
+                            if (Build.MANUFACTURER.toLowerCase().equals("huawei")) {
                                 mediaPlayer = MediaPlayer.create(DialogActivity.this, R.raw.chime);
-                                mediaPlayer.setAudioAttributes(new AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_ALARM).build());
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                    mediaPlayer.setAudioAttributes(new AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_ALARM).build());
+                                } else {
+                                    mediaPlayer.setAudioStreamType(AudioManager.STREAM_ALARM);
+                                }
                             } else {
                                 Uri alert = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
                                 mAlarm = RingtoneManager.getRingtone(getApplicationContext(), alert);
-                                mAlarm.setAudioAttributes(new AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_ALARM).build());
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                    mAlarm.setAudioAttributes(new AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_ALARM).build());
+                                } else {
+                                    //noinspection deprecation
+                                    mAlarm.setStreamType(AudioManager.STREAM_ALARM);
+                                }
                             }
 
                             mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
@@ -153,7 +165,7 @@ public class DialogActivity extends AppCompatActivity {
                                         long[] pattern = {0, 200, 50};
                                         mVibrator.vibrate(pattern, 0);
                                     }
-                                    if (android.os.Build.MANUFACTURER.toLowerCase().equals("huawei")) {
+                                    if (Build.MANUFACTURER.toLowerCase().equals("huawei")) {
                                         if (mediaPlayer != null) {
                                             mediaPlayer.start();
                                         }

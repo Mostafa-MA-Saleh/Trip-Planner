@@ -13,13 +13,11 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,6 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+@SuppressWarnings("ConstantConditions")
 public class TripsHistoryActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -41,9 +40,6 @@ public class TripsHistoryActivity extends AppCompatActivity implements OnMapRead
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (FirebaseRemoteConfig.getInstance().getBoolean("AltTheme")) {
-            setTheme(R.style.Girly);
-        }
         setContentView(R.layout.activity_trips_history);
         final SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.Map);
@@ -100,7 +96,7 @@ public class TripsHistoryActivity extends AppCompatActivity implements OnMapRead
             JSONObject overviewPolylines = routes.getJSONObject("overview_polyline");
             String encodedString = overviewPolylines.getString("points");
             List<LatLng> list = decodePoly(encodedString);
-            Polyline line = Map.addPolyline(new PolylineOptions()
+            Map.addPolyline(new PolylineOptions()
                     .addAll(list)
                     .width(12)
                     .color(color)
@@ -165,7 +161,7 @@ public class TripsHistoryActivity extends AppCompatActivity implements OnMapRead
                 HttpURLConnection HttpConn = (HttpURLConnection) url.openConnection();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(HttpConn.getInputStream(), "UTF-8"), 8);
                 StringBuilder sb = new StringBuilder();
-                String line = null;
+                String line;
                 while ((line = reader.readLine()) != null) {
                     sb.append(line);
                     sb.append("\n");

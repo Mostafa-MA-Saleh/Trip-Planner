@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.Keep;
@@ -127,7 +128,11 @@ class Trip implements Parcelable {
 
     public void setAlarm(Context context) {
         AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        am.setExact(AlarmManager.RTC_WAKEUP, getTimeInMillis(), createPendingIntent(context));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            am.setExact(AlarmManager.RTC_WAKEUP, getTimeInMillis(), createPendingIntent(context));
+        } else {
+            am.set(AlarmManager.RTC_WAKEUP, getTimeInMillis(), createPendingIntent(context));
+        }
     }
 
     public void cancelAlarm(Context context) {

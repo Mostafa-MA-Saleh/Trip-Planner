@@ -1,7 +1,6 @@
 package com.iti.tripplanner;
 
 import android.app.Activity;
-import android.app.ActivityOptions;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -23,7 +22,7 @@ import com.tooltip.Tooltip;
 
 import java.util.ArrayList;
 
-
+@SuppressWarnings("ConstantConditions")
 class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
     private final ViewBinderHelper mViewBinderHelper = new ViewBinderHelper();
@@ -41,8 +40,7 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
     public RecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_row, parent, false);
-        RecyclerAdapter.ViewHolder vh = new RecyclerAdapter.ViewHolder(v);
-        return vh;
+        return new ViewHolder(v);
     }
 
     @Override
@@ -112,8 +110,7 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
                 Intent intent = new Intent(mParent, TripDetailsActivity.class);
                 intent.putExtra("Trip", mTrips.get(holder.getAdapterPosition()));
                 intent.putExtra("Position", holder.getAdapterPosition());
-                mParent.startActivityForResult(intent, MainActivity.RQST_VIEW_TRIP,
-                        ActivityOptions.makeSceneTransitionAnimation(mParent, holder.nameTextView, "Trip").toBundle());
+                mParent.startActivityForResult(intent, MainActivity.RQST_VIEW_TRIP);
             }
         });
 

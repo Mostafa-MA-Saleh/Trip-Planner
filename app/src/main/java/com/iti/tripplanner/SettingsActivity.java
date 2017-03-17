@@ -1,6 +1,5 @@
 package com.iti.tripplanner;
 
-import android.app.ActivityManager;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -8,8 +7,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SwitchCompat;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.CompoundButton;
 
 import com.google.android.gms.ads.AdRequest;
@@ -17,7 +14,6 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
-import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -29,30 +25,11 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (FirebaseRemoteConfig.getInstance().getBoolean("AltTheme")) {
-            setTheme(R.style.Girly);
-        }
         setContentView(R.layout.activity_settings);
-        Button btnClearData = (Button) findViewById(R.id.ClearDataButton);
         progressDialog = new ProgressDialog(this);
         final SwitchCompat swtPremium = (SwitchCompat) findViewById(R.id.PremiumFeaturesSwitch);
         swtPremium.setChecked(mPremium);
         swtPremium.setEnabled(!mPremium);
-        btnClearData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new AlertDialog.Builder(SettingsActivity.this)
-                        .setMessage("Are you sure?")
-                        .setTitle("Clear data!")
-                        .setNegativeButton("No", null)
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                ((ActivityManager) getSystemService(ACTIVITY_SERVICE)).clearApplicationUserData();
-                            }
-                        }).show();
-            }
-        });
 
         swtPremium.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

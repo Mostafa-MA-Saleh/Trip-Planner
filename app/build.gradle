@@ -22,10 +22,10 @@ android {
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.iti.tripplanner"
-        minSdkVersion 21
+        minSdkVersion 17
         targetSdkVersion 25
-        versionCode 760
-        versionName "7.6.0"
+        versionCode 800
+        versionName "8.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -61,7 +61,6 @@ dependencies {
     compile 'com.google.firebase:firebase-core:10.2.0'
     compile 'com.google.firebase:firebase-auth:10.2.0'
     compile 'com.google.firebase:firebase-database:10.2.0'
-    compile 'com.google.firebase:firebase-config:10.2.0'
     compile 'com.google.firebase:firebase-ads:10.2.0'
 
     compile 'com.github.vihtarb:tooltip:0.1.9'

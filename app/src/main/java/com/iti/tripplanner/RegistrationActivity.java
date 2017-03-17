@@ -22,6 +22,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
+@SuppressWarnings("ConstantConditions")
 public class RegistrationActivity extends AppCompatActivity implements View.OnFocusChangeListener {
 
     private FirebaseAuth mAuth;

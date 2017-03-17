@@ -28,7 +28,6 @@ import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -36,7 +35,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-
+@SuppressWarnings("ConstantConditions")
 public class TripActivity extends AppCompatActivity implements TextWatcher {
 
     private final int START_REQUEST_CODE = 1;
@@ -63,9 +62,6 @@ public class TripActivity extends AppCompatActivity implements TextWatcher {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (FirebaseRemoteConfig.getInstance().getBoolean("AltTheme")) {
-            setTheme(R.style.Girly);
-        }
         setResult(RESULT_CANCELED);
         setContentView(R.layout.activity_trip);
         dbAdapter = new DBAdapter(FirebaseAuth.getInstance().getCurrentUser().getUid());

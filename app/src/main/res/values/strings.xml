@@ -45,6 +45,8 @@
     <string name="notes_header_text">\nNotes:</string>
     <string name="changelog">
         Changelog:\n\n
+        \tv8.0.0:\n
+        \t\t-Now the app supports Android 4.2 (Jellybean) and up.\n\n
         \tv7.6.0:\n
         \t\t-Added a round icon.\n
         \t\t-Removed Firebase RemoteConfigurations.\n
