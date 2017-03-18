@@ -188,6 +188,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
                     params.removeRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
                 } else {
+                    //Testing on android 4.0
                     params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 0);
                 }
                 mFloatingActionButton.setLayoutParams(params);
