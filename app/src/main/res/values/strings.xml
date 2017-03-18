@@ -45,6 +45,8 @@
     <string name="notes_header_text">\nNotes:</string>
     <string name="changelog">
         Changelog:\n\n
+        \tv8.1.4:\n
+        \t\t-Minor bug fixes.\n\n
         \tv8.1.2:\n
         \t\t-Minor Interface Optimizations For Android 4.0-4.3.\n\n
         \tv8.1.0:\n

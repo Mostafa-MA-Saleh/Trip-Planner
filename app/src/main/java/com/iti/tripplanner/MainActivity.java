@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             mProgressDialog.show();
             DBAdapter.getDatabase()
                     .getReference(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                    .addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             mCurrentTripsAdapter.clear();

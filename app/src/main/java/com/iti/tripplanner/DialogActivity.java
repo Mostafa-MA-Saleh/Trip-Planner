@@ -117,10 +117,20 @@ public class DialogActivity extends AppCompatActivity {
                             btnLater.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    Uri gmmIntentUri = Uri.parse("google.navigation:q=" + mTrip.getDestinationCoordinates());
-                                    Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-                                    mapIntent.setPackage("com.google.android.apps.maps");
-                                    PendingIntent pendingIntent = PendingIntent.getActivity(DialogActivity.this, mTrip.get_id(), mapIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+                                    if (android.os.Build.MANUFACTURER.toLowerCase().equals("huawei")) {
+                                        mediaPlayer.stop();
+                                        mediaPlayer.release();
+                                    } else {
+                                        mAlarm.stop();
+                                    }
+
+                                    PendingIntent pendingIntent =
+                                            PendingIntent.getActivity(DialogActivity.this,
+                                                    mTrip.get_id(),
+                                                    getMapIntent(mTrip.getDestinationCoordinates()),
+                                                    PendingIntent.FLAG_UPDATE_CURRENT);
+
                                     Notification alarmNotification =
                                             new NotificationCompat.Builder(DialogActivity.this)
                                                     .setSmallIcon(R.mipmap.ic_launcher)
@@ -130,6 +140,7 @@ public class DialogActivity extends AppCompatActivity {
                                                     .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                                                     .setTicker(getString(R.string.app_name))
                                                     .setContentText("Tap here to start navigation for " + mTrip.getName())
+                                                    .setDefaults(Notification.DEFAULT_ALL)
                                                     .build();
 
                                     mNotificationManager.notify(mTrip.get_id(), alarmNotification);
@@ -150,10 +161,7 @@ public class DialogActivity extends AppCompatActivity {
                             btnStart.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    Uri gmmIntentUri = Uri.parse("google.navigation:q=" + mTrip.getDestinationCoordinates());
-                                    Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-                                    mapIntent.setPackage("com.google.android.apps.maps");
-                                    startActivity(mapIntent);
+                                    startActivity(getMapIntent(mTrip.getDestinationCoordinates()));
                                     onBackPressed();
                                 }
                             });
@@ -186,6 +194,13 @@ public class DialogActivity extends AppCompatActivity {
         }
     }
 
+
+    private Intent getMapIntent(String coordinates) {
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("google.navigation:q=" + coordinates));
+        mapIntent.setPackage("com.google.android.apps.maps");
+        return mapIntent;
+    }
+
     @Override
     public void onBackPressed() {
         if (android.os.Build.MANUFACTURER.toLowerCase().equals("huawei")) {
@@ -198,7 +213,7 @@ public class DialogActivity extends AppCompatActivity {
         mVibrator.cancel();
         mTrip.setDone(true);
         DBAdapter dbAdapter = new DBAdapter(FirebaseAuth.getInstance().getCurrentUser().getUid());
-        dbAdapter.updateTrip(mTrip.get_id(), mTrip);
+        dbAdapter.updateTrip(mTrip);
         super.onBackPressed();
     }
 

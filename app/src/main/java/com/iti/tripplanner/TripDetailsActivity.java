@@ -117,7 +117,7 @@ public class TripDetailsActivity extends AppCompatActivity {
         if (mChanged) {
             mTrip.setDone(!mTrip.isDone());
             DBAdapter dbAdapter = new DBAdapter(FirebaseAuth.getInstance().getCurrentUser().getUid());
-            dbAdapter.updateTrip(mTrip.get_id(), mTrip);
+            dbAdapter.updateTrip(mTrip);
 
             mTrip.set_id(dbAdapter.getLastID());
 

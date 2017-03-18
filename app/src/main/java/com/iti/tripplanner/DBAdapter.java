@@ -50,9 +50,8 @@ class DBAdapter {
         mDatabaseRef.child(String.valueOf(_id)).removeValue();
     }
 
-    void updateTrip(int _id, Trip trip) {
-        deleteTrip(_id);
-        insertTrip(trip);
+    void updateTrip(Trip trip) {
+        mDatabaseRef.child(String.valueOf(trip.get_id())).setValue(trip);
     }
 
     int getLastID() {

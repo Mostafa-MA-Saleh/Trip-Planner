@@ -247,10 +247,10 @@ public class TripActivity extends AppCompatActivity implements TextWatcher {
         setTripData();
         if ((getIntent().getParcelableExtra("Trip")) == null) {
             dbAdapter.insertTrip(trip);
+            trip.set_id(dbAdapter.getLastID());
         } else {
-            dbAdapter.updateTrip(_id, trip);
+            dbAdapter.updateTrip(trip);
         }
-        trip.set_id(dbAdapter.getLastID());
         if (trip.getTimeInMillis() > System.currentTimeMillis() && !trip.isDone())
             trip.setAlarm(getApplicationContext());
         Intent data = new Intent();
