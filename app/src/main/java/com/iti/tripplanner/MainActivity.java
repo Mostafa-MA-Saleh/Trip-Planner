@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.internal.NavigationMenuView;
@@ -184,7 +185,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mFloatingActionButton.getLayoutParams();
             if (!SettingsActivity.mPremium) {
                 mAdView.setVisibility(View.VISIBLE);
-                params.removeRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                    params.removeRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+                } else {
+                    params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 0);
+                }
                 mFloatingActionButton.setLayoutParams(params);
             } else {
                 mAdView.setVisibility(View.GONE);

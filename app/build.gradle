@@ -22,7 +22,7 @@ android {
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.iti.tripplanner"
-        minSdkVersion 17
+        minSdkVersion 15
         targetSdkVersion 25
         versionCode 800
         versionName "8.0.0"
