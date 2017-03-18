@@ -130,4 +130,8 @@
     <string name="later">Later</string>
     <string name="video_ad_unit_id">ca-app-pub-7136716145062171/7192956641</string>
     <string name="banner_ad_unit_id">ca-app-pub-7136716145062171/6634553440</string>
+    <string name="settings_premium">Enable Premium Features</string>
+    <string name="discard">Discard</string>
+    <string name="save">Save</string>
+    <string name="trip_name">Trip Name</string>
 </resources>

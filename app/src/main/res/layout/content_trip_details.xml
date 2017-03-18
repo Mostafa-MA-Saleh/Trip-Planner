@@ -59,8 +59,10 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/Duration"
             android:layout_alignTop="@id/Duration"
+            android:layout_marginLeft="5dp"
             android:layout_marginStart="5dp"
-            android:layout_toEndOf="@+id/Duration" />
+            android:layout_toEndOf="@+id/Duration"
+            android:layout_toRightOf="@+id/Duration" />
 
         <TextView
             android:id="@+id/NotesHeader"
@@ -77,6 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_below="@id/NotesHeader"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginStart="@dimen/activity_horizontal_margin"
             android:layout_marginTop="5dp"
             android:textIsSelectable="false"

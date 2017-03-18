@@ -8,7 +8,8 @@
     android:layout_marginRight="@dimen/activity_horizontal_margin"
     android:layout_marginTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="com.iti.tripplanner.TripActivity">
+    tools:context="com.iti.tripplanner.TripActivity"
+    tools:ignore="ButtonStyle">
 
     <LinearLayout
         android:id="@+id/Buttons"
@@ -22,14 +23,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Discard" />
+            android:text="@string/discard" />
 
         <Button
             android:id="@+id/SaveButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Save" />
+            android:text="@string/save" />
     </LinearLayout>
 
     <ScrollView
@@ -50,9 +51,10 @@
                     android:id="@+id/TripName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Trip Name"
-                    android:maxLines="1"
-                    android:singleLine="true"/>
+                    android:hint="@string/trip_name"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLines="1" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -64,10 +66,9 @@
                     android:id="@+id/TripStart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:focusable="false"
                     android:hint="@string/start_address"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:focusable="false" />
+                    android:maxLines="1" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -79,10 +80,9 @@
                     android:id="@+id/TripDestinitaion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:focusable="false"
                     android:hint="@string/destination"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:focusable="false" />
+                    android:maxLines="1" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -96,9 +96,8 @@
                     android:layout_height="wrap_content"
                     android:focusable="false"
                     android:hint="@string/date_and_time"
-                    android:maxLines="1"
-                    android:editable="false"
-                    android:inputType="datetime" />
+                    android:inputType="datetime"
+                    android:maxLines="1" />
 
             </android.support.design.widget.TextInputLayout>
 
