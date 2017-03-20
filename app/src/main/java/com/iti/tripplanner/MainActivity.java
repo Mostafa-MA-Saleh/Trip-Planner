@@ -18,7 +18,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -50,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private RecyclerAdapter mPreviousTripsAdapter;
     private RecyclerView mTripsList;
     private FloatingActionButton mFloatingActionButton;
+    private SearchView mSearchView;
 
     // Prevent dialog dismiss when orientation changes
     private static void doKeepDialog(Dialog dialog) {
@@ -177,6 +180,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_main_search, menu);
+        final MenuItem searchItem = menu.findItem(R.id.action_search);
+        mSearchView = (SearchView) searchItem.getActionView();
+        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                mCurrentTripsAdapter.filter(s);
+                mPreviousTripsAdapter.filter(s);
+                return false;
+            }
+        });
+        return true;
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         if (mAdView != null) {
@@ -209,9 +233,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(new Intent(this, LoginActivity.class));
             finish();
         } else if (id == R.id.nav_trips) {
+            mSearchView.setIconified(true);
             mTripsList.setAdapter(mCurrentTripsAdapter);
             getSupportActionBar().setSubtitle("");
         } else if (id == R.id.nav_previous_trips) {
+            mSearchView.setIconified(true);
             mTripsList.setAdapter(mPreviousTripsAdapter);
             getSupportActionBar().setSubtitle("Finished Trips");
             mFloatingActionButton.setVisibility(View.INVISIBLE);

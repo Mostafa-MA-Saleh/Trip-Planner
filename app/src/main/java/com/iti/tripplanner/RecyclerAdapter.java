@@ -8,6 +8,7 @@ import android.graphics.Typeface;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -28,9 +29,10 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
     private final ViewBinderHelper mViewBinderHelper = new ViewBinderHelper();
     private Activity mParent;
 
-    private ArrayList<Trip> mTrips;
+    private ArrayList<Trip> mFilteredTrips, mTrips;
 
     RecyclerAdapter(Activity parent) {
+        mFilteredTrips = new ArrayList<>();
         mTrips = new ArrayList<>();
         mViewBinderHelper.setOpenOnlyOne(true);
         mParent = parent;
@@ -46,18 +48,18 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(final RecyclerAdapter.ViewHolder holder, final int position) {
         holder.tooltipHandler = new Handler();
-        holder.nameTextView.setText(mTrips.get(position).getName());
-        holder.timeTextView.setText(mTrips.get(position).getTime());
+        holder.nameTextView.setText(mFilteredTrips.get(position).getName());
+        holder.timeTextView.setText(mFilteredTrips.get(position).getTime());
         mViewBinderHelper.bind(holder.swipeRevealLayout, String.valueOf(position));
 
         String text = "Start: " +
-                mTrips.get(holder.getAdapterPosition()).getStartString() +
+                mFilteredTrips.get(holder.getAdapterPosition()).getStartString() +
                 "\n\nDestination: " +
-                mTrips.get(holder.getAdapterPosition()).getDestinationString() +
+                mFilteredTrips.get(holder.getAdapterPosition()).getDestinationString() +
                 "\n\nRound Trip: " +
-                (mTrips.get(holder.getAdapterPosition()).isRoundTrip() ? "Yes" : "No") +
+                (mFilteredTrips.get(holder.getAdapterPosition()).isRoundTrip() ? "Yes" : "No") +
                 "\n\nNotes :\n\n" +
-                mTrips.get(holder.getAdapterPosition()).getNotes();
+                mFilteredTrips.get(holder.getAdapterPosition()).getNotes();
 
         holder.tooltip = new Tooltip.Builder(holder.row)
                 .setText(text)
@@ -76,8 +78,8 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                mTrips.get(holder.getAdapterPosition()).cancelAlarm(mParent.getApplicationContext());
-                                new DBAdapter(FirebaseAuth.getInstance().getCurrentUser().getUid()).deleteTrip(mTrips.get(holder.getAdapterPosition()).get_id());
+                                mFilteredTrips.get(holder.getAdapterPosition()).cancelAlarm(mParent.getApplicationContext());
+                                new DBAdapter(FirebaseAuth.getInstance().getCurrentUser().getUid()).deleteTrip(mFilteredTrips.get(holder.getAdapterPosition()).get_id());
                                 remove(holder.getAdapterPosition());
                                 holder.swipeRevealLayout.close(true);
                             }
@@ -96,7 +98,7 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
             public void onClick(View v) {
                 holder.swipeRevealLayout.close(true);
                 Intent intent = new Intent(mParent, TripActivity.class);
-                intent.putExtra("Trip", mTrips.get(holder.getAdapterPosition()));
+                intent.putExtra("Trip", mFilteredTrips.get(holder.getAdapterPosition()));
                 intent.putExtra("Position", holder.getAdapterPosition());
                 mParent.startActivityForResult(intent, MainActivity.RQST_EDIT_TRIP);
             }
@@ -108,7 +110,7 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
                     holder.tooltip.dismiss();
                 holder.swipeRevealLayout.close(true);
                 Intent intent = new Intent(mParent, TripDetailsActivity.class);
-                intent.putExtra("Trip", mTrips.get(holder.getAdapterPosition()));
+                intent.putExtra("Trip", mFilteredTrips.get(holder.getAdapterPosition()));
                 intent.putExtra("Position", holder.getAdapterPosition());
                 mParent.startActivityForResult(intent, MainActivity.RQST_VIEW_TRIP);
             }
@@ -137,32 +139,61 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
         });
     }
 
+    void filter(final String filter) {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                mFilteredTrips.clear();
+                if (TextUtils.isEmpty(filter))
+                    mFilteredTrips.addAll(mTrips);
+                else
+                    for (Trip trip : mTrips)
+                        if (trip.getName().toLowerCase().contains(filter.toLowerCase()))
+                            mFilteredTrips.add(trip);
+
+                mParent.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        notifyDataSetChanged();
+                    }
+                });
+            }
+        }).start();
+
+    }
+
     void remove(int position) {
+        mFilteredTrips.remove(position);
         mTrips.remove(position);
         notifyItemRemoved(position);
     }
 
     void add(Trip trip, int position) {
+        mFilteredTrips.add(position, trip);
         mTrips.add(position, trip);
         notifyItemInserted(position);
     }
 
     void update(Trip trip, int position) {
+        mFilteredTrips.set(position, trip);
         mTrips.set(position, trip);
         notifyItemChanged(position);
     }
 
     void clear() {
+        mFilteredTrips.clear();
         mTrips.clear();
     }
 
     ArrayList<Trip> getAllElements() {
-        return mTrips;
+        return mFilteredTrips;
     }
 
     @Override
     public int getItemCount() {
-        return mTrips.size();
+        return mFilteredTrips.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
