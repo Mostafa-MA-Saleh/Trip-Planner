@@ -2,7 +2,6 @@ package com.iti.tripplanner;
 
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SwitchCompat;
@@ -19,17 +18,14 @@ import android.widget.CompoundButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.firebase.auth.FirebaseAuth;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 @SuppressWarnings("ConstantConditions")
 public class TripDetailsActivity extends AppCompatActivity {
@@ -57,13 +53,37 @@ public class TripDetailsActivity extends AppCompatActivity {
         progDuration = (ProgressBar) findViewById(R.id.DurationProgress);
 
         setTitle(mTrip.getName());
-        String startCoordinates = mTrip.getStartCoordinates();
-        String destCoordinates = mTrip.getDestinationCoordinates();
-        if (savedInstanceState != null && !savedInstanceState.getString("Duration", "").equals("")) {
-            new DurationTask().onPostExecute(savedInstanceState.getString("Duration"));
-        } else {
-            new DurationTask().execute(startCoordinates, destCoordinates);
-        }
+        NetworkAdapter.getRequestQueue(this).add(
+                new JsonObjectRequest(
+                        "https://maps.googleapis.com/maps/api/directions/json?origin="
+                                + mTrip.getStartCoordinates()
+                                + "&destination="
+                                + mTrip.getDestinationCoordinates()
+                                + "&key=AIzaSyBdKV8BgBxsEiDjArDdRRPO4xXLFbcil3Y",
+                        null,
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                try {
+                                    JSONArray routesArray = response.getJSONArray("routes");
+                                    JSONObject route = routesArray.getJSONObject(0);
+                                    JSONArray legsArray = route.getJSONArray("legs");
+                                    JSONObject legs = legsArray.getJSONObject(0);
+                                    JSONObject duration = legs.getJSONObject("duration");
+                                    setDurationText(duration.getString("text"));
+                                } catch (JSONException e) {
+                                    setDurationText(getString(R.string.retrieve_duration_error));
+                                }
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                setDurationText(getString(R.string.retrieve_duration_error));
+                            }
+                        }
+                )
+        );
 
         StyleSpan boldSpan = new StyleSpan(Typeface.BOLD);
 
@@ -137,44 +157,15 @@ public class TripDetailsActivity extends AppCompatActivity {
         super.onBackPressed();
     }
 
-    private class DurationTask extends AsyncTask<String, String, String> {
+    void setDurationText(String duration) {
+        SpannableStringBuilder text = new SpannableStringBuilder()
+                .append("Duration: ")
+                .append(duration);
 
-        @Override
-        protected String doInBackground(String... params) {
-            try {
-                URL url = new URL("https://maps.googleapis.com/maps/api/directions/json?origin=" + params[0] + "&destination=" + params[1] + "&key=AIzaSyBdKV8BgBxsEiDjArDdRRPO4xXLFbcil3Y");
-                HttpURLConnection HttpConn = (HttpURLConnection) url.openConnection();
-                BufferedReader reader = new BufferedReader(new InputStreamReader(HttpConn.getInputStream(), "UTF-8"), 8);
-                StringBuilder sb = new StringBuilder();
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    sb.append(line);
-                    sb.append("\n");
-                }
-                JSONObject jsonObject = new JSONObject(sb.toString());
-                JSONArray routesArray = jsonObject.getJSONArray("routes");
-                JSONObject route = routesArray.getJSONObject(0);
-                JSONArray legsArray = route.getJSONArray("legs");
-                JSONObject legs = legsArray.getJSONObject(0);
-                JSONObject duration = legs.getJSONObject("duration");
-                return duration.getString("text");
-            } catch (JSONException | IOException e) {
-                return "Unable to retrieve duration";
-            }
-        }
+        text.setSpan(new StyleSpan(Typeface.BOLD), 0, 9, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-        @Override
-        protected void onPostExecute(String s) {
-            SpannableStringBuilder text = new SpannableStringBuilder()
-                    .append("Duration: ")
-                    .append(s);
-
-            text.setSpan(new StyleSpan(Typeface.BOLD), 0, 9, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-            progDuration.setVisibility(View.INVISIBLE);
-            txtDuration.setTypeface(Typeface.DEFAULT, Typeface.NORMAL);
-            txtDuration.setText(text, TextView.BufferType.SPANNABLE);
-            duration = s;
-        }
+        progDuration.setVisibility(View.INVISIBLE);
+        txtDuration.setTypeface(Typeface.DEFAULT, Typeface.NORMAL);
+        txtDuration.setText(text, TextView.BufferType.SPANNABLE);
     }
 }

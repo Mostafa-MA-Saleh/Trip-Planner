@@ -43,9 +43,11 @@
     <string name="error_password_match">Passwords didn\'t match</string>
     <string name="duration">Duration:</string>
     <string name="notes_header_text">\nNotes:</string>
+    <string name="retrieve_duration_error">Unable to retrieve duration!</string>
     <string name="changelog">
         Changelog:\n\n
         \tv8.2.0:\n
+        \t\t-Switched all networking to Volley.\n
         \t\t-Added a search function to trips list.\n\n
         \tv8.1.4:\n
         \t\t-Minor bug fixes.\n\n

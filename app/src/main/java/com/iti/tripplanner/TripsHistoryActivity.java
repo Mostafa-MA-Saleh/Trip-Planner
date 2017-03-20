@@ -2,12 +2,16 @@ package com.iti.tripplanner;
 
 import android.app.ProgressDialog;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -23,11 +27,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -36,17 +35,26 @@ import java.util.Random;
 public class TripsHistoryActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private ProgressDialog mProgressDialog;
+    private int mRequests;
+    private RequestQueue mRequestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trips_history);
+        mRequestQueue = NetworkAdapter.getRequestQueue(this);
         final SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.Map);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 mapFragment.getMapAsync(TripsHistoryActivity.this);
+
+                mProgressDialog = new ProgressDialog(TripsHistoryActivity.this);
+                mProgressDialog.setMessage("Fetching routes, Please wait...");
+                mProgressDialog.setIndeterminate(true);
+                mProgressDialog.show();
             }
         }, 200);
     }
@@ -71,13 +79,43 @@ public class TripsHistoryActivity extends AppCompatActivity implements OnMapRead
                         for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                             if (!postSnapshot.getKey().equals("Count")) {
                                 Trip trip = postSnapshot.getValue(Trip.class);
-                                String startCoordinates = trip.getStartCoordinates();
-                                String destCoordinates = trip.getDestinationCoordinates();
-                                new connectAsyncTask().execute(startCoordinates, destCoordinates);
+                                mRequestQueue.add(
+                                        new JsonObjectRequest(
+                                                "https://maps.googleapis.com/maps/api/directions/json?origin="
+                                                        + trip.getStartCoordinates()
+                                                        + "&destination="
+                                                        + trip.getDestinationCoordinates()
+                                                        + "&key=AIzaSyBdKV8BgBxsEiDjArDdRRPO4xXLFbcil3Y",
+                                                null,
+                                                new Response.Listener<JSONObject>() {
+                                                    @Override
+                                                    public void onResponse(JSONObject response) {
+                                                        int colors[] = {Color.BLUE, Color.BLACK, Color.GRAY, Color.CYAN, Color.MAGENTA, Color.RED};
+                                                        Random rand = new Random();
+                                                        int randomColor = colors[rand.nextInt(colors.length)];
+                                                        drawPath(response, mMap, randomColor);
+                                                    }
+                                                },
+                                                new Response.ErrorListener() {
+                                                    @Override
+                                                    public void onErrorResponse(VolleyError error) {
+                                                    }
+                                                }
+                                        )
+                                );
+                                mRequests++;
                                 String[] coordinates = trip.getStartCoordinates().split(",");
                                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Double.parseDouble(coordinates[0]), Double.parseDouble(coordinates[1])), 10f));
                             }
                         }
+                        mRequestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+                            @Override
+                            public void onRequestFinished(Request<Object> request) {
+                                mRequests--;
+                                if (mRequests == 0)
+                                    mProgressDialog.dismiss();
+                            }
+                        });
                     }
 
                     @Override
@@ -87,11 +125,10 @@ public class TripsHistoryActivity extends AppCompatActivity implements OnMapRead
                 });
     }
 
-    public void drawPath(String result, GoogleMap Map, int color) {
+    public void drawPath(JSONObject result, GoogleMap Map, int color) {
 
         try {
-            final JSONObject json = new JSONObject(result);
-            JSONArray routeArray = json.getJSONArray("routes");
+            JSONArray routeArray = result.getJSONArray("routes");
             JSONObject routes = routeArray.getJSONObject(0);
             JSONObject overviewPolylines = routes.getJSONObject("overview_polyline");
             String encodedString = overviewPolylines.getString("points");
@@ -138,51 +175,5 @@ public class TripsHistoryActivity extends AppCompatActivity implements OnMapRead
             poly.add(p);
         }
         return poly;
-    }
-
-    private class connectAsyncTask extends AsyncTask<String, Void, String> {
-        private ProgressDialog progressDialog;
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            progressDialog = new ProgressDialog(TripsHistoryActivity.this);
-            progressDialog.setMessage("Fetching routes, Please wait...");
-            progressDialog.setIndeterminate(true);
-            progressDialog.show();
-        }
-
-        @Override
-        protected String doInBackground(String... params) {
-            URL url;
-            try {
-                url = new URL("https://maps.googleapis.com/maps/api/directions/json?origin=" + params[0]
-                        + "&destination=" + params[1] + "&key=AIzaSyBdKV8BgBxsEiDjArDdRRPO4xXLFbcil3Y");
-                HttpURLConnection HttpConn = (HttpURLConnection) url.openConnection();
-                BufferedReader reader = new BufferedReader(new InputStreamReader(HttpConn.getInputStream(), "UTF-8"), 8);
-                StringBuilder sb = new StringBuilder();
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    sb.append(line);
-                    sb.append("\n");
-                }
-                return sb.toString();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return "";
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-            progressDialog.hide();
-            if (result != null) {
-                int colors[] = {Color.BLUE, Color.BLACK, Color.GRAY, Color.CYAN, Color.MAGENTA, Color.RED};
-                Random rand = new Random();
-                int randomColor = colors[rand.nextInt(colors.length)];
-                drawPath(result, mMap, randomColor);
-            }
-        }
     }
 }
