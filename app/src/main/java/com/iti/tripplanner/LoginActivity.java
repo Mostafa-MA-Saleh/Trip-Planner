@@ -1,5 +1,6 @@
 package com.iti.tripplanner;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -41,6 +42,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import java.util.Arrays;
 import java.util.List;
 
+@SuppressLint("GoogleAppIndexingApiWarning")
 @SuppressWarnings("ConstantConditions")
 public class LoginActivity extends AppCompatActivity {
 

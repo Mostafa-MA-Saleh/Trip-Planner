@@ -1,6 +1,9 @@
 package com.iti.tripplanner;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
@@ -8,9 +11,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -18,9 +23,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
+@SuppressWarnings("ConstantConditions")
 public class PasswordResetActivity extends AppCompatActivity {
 
     private EditText mEmailText;
+    private Dialog mProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +36,13 @@ public class PasswordResetActivity extends AppCompatActivity {
         getWindow().setWindowAnimations(android.R.style.Animation_Toast);
 
         mEmailText = (EditText) findViewById(R.id.txtemail);
+
+        mProgressDialog = new Dialog(this);
+        mProgressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        mProgressDialog.setContentView(new ProgressBar(this));
+        mProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        mProgressDialog.setCanceledOnTouchOutside(false);
+        mProgressDialog.setCancelable(false);
 
         final Button passResetButton = (Button) findViewById(R.id.btnResetPass);
         passResetButton.setOnClickListener(new View.OnClickListener() {
@@ -42,10 +56,12 @@ public class PasswordResetActivity extends AppCompatActivity {
                 } else if (!email.contains("@") || !email.contains(".")) {
                     mEmailText.setError(getString(R.string.error_invalid_email));
                 } else {
+                    mProgressDialog.show();
                     FirebaseAuth.getInstance().sendPasswordResetEmail(email)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
+                                    mProgressDialog.dismiss();
                                     if (task.isSuccessful())
                                         new AlertDialog.Builder(PasswordResetActivity.this)
                                                 .setTitle(getString(R.string.reset_password))
@@ -65,12 +81,7 @@ public class PasswordResetActivity extends AppCompatActivity {
                                     new AlertDialog.Builder(PasswordResetActivity.this)
                                             .setTitle(getString(R.string.reset_password))
                                             .setMessage(e.getLocalizedMessage())
-                                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                                @Override
-                                                public void onClick(DialogInterface dialog, int which) {
-                                                    finish();
-                                                }
-                                            })
+                                            .setPositiveButton("Ok", null)
                                             .show();
                                 }
                             });
