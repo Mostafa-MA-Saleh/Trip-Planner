@@ -147,6 +147,7 @@
     <orderEntry type="library" exported="" name="bolts-tasks-1.4.0" level="project" />
     <orderEntry type="library" exported="" name="crashlytics-core-2.3.16" level="project" />
     <orderEntry type="library" exported="" name="customtabs-25.3.0" level="project" />
+    <orderEntry type="library" exported="" name="firebase-appindexing-10.2.0" level="project" />
     <orderEntry type="library" exported="" name="cardview-v7-25.3.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-auth-10.2.0" level="project" />
     <orderEntry type="library" exported="" name="CircularReveal-1.1.1" level="project" />
