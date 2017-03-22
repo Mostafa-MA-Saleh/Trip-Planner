@@ -47,6 +47,11 @@
             android:theme="@style/AppTheme.NoActionBar.FullScreen" />
 
         <activity
+            android:name=".PasswordResetActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar.FullScreen" />
+
+        <activity
             android:name=".TripActivity"
             android:label="@string/title_activity_trip">
             <meta-data

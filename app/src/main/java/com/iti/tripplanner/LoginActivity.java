@@ -70,6 +70,7 @@ public class LoginActivity extends AppCompatActivity {
         mEmailText = (EditText) findViewById(R.id.txtemail);
         mPasswordText = (EditText) findViewById(R.id.txtpass);
         TextView btnRegister = (TextView) findViewById(R.id.btnRegister);
+        TextView btnResetPassword = (TextView) findViewById(R.id.btnResetPassword);
         final Button SignInButton = (Button) findViewById(R.id.btnsignin);
         Button GoogleSignInButton = (Button) findViewById(R.id.btnsigningoogle);
         Button FacebookSignInButton = (Button) findViewById(R.id.btnsigninfacebook);
@@ -189,6 +190,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, RegistrationActivity.class));
+            }
+        });
+        btnResetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, PasswordResetActivity.class));
             }
         });
     }

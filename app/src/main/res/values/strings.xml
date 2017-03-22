@@ -46,6 +46,9 @@
     <string name="retrieve_duration_error">Unable to retrieve duration!</string>
     <string name="changelog">
         Changelog:\n\n
+        \tv8.3.0:\n
+        \t\t-Added the option to reset a forgotten password.\n
+        \t\t-Other minor improvements.\n\n
         \tv8.2.0:\n
         \t\t-Switched all networking to Volley.\n
         \t\t-Added a search function to trips list.\n\n
@@ -140,4 +143,6 @@
     <string name="discard">Discard</string>
     <string name="save">Save</string>
     <string name="trip_name">Trip Name</string>
+    <string name="forgotten_password">Forgot you password? Tap here.</string>
+    <string name="reset_password">Reset Password</string>
 </resources>
