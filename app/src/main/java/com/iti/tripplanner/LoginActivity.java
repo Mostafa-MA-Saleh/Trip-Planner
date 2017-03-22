@@ -65,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
         mProgressDialog.setContentView(new ProgressBar(this));
         mProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         mProgressDialog.setCanceledOnTouchOutside(false);
+        mProgressDialog.setCancelable(false);
 
         mAuth = FirebaseAuth.getInstance();
         mCallbackManager = CallbackManager.Factory.create();

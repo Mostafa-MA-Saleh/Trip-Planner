@@ -47,6 +47,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnFo
         mProgressDialog.setContentView(new ProgressBar(this));
         mProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         mProgressDialog.setCanceledOnTouchOutside(false);
+        mProgressDialog.setCancelable(false);
 
         mAuth = FirebaseAuth.getInstance();
         mFullNameText = (EditText) findViewById(R.id.txtfullname);
