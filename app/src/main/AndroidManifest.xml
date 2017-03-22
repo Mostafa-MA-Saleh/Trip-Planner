@@ -52,6 +52,7 @@
 
                 <data
                     android:host="trip-planner.com"
+                    android:pathPrefix="/login"
                     android:scheme="http" />
 
             </intent-filter>

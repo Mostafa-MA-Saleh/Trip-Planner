@@ -214,7 +214,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="92afcc796bdd17e988a4d6ab920f124a0e4bf3fa">
+        sha1="1698d527112fe031b12fff3e11be923ca5cf396e">
         <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_79774aa9fc28cd0c0a112cac520e4d13f4bd0e63\classes.dex" />
     </item>
     <item
@@ -300,6 +300,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\c97cee7aaf0061f6a439048d555a0f8bba843ede\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1fbf3733f36fea63e70373212796e70f9079981f">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\release\classes_13a848964f4a577b47543da5491896be771b98ed.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="C:\Users\Mostafa Saleh\.android\build-cache\2dc2e9a2794f4b6a573be3605be6716f303c1968\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
@@ -315,6 +324,15 @@
         revision="25.0.2"
         sha1="654b294d429b56fd18392f2b68ad79954f431f8e">
         <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\classes_f3f42cca13eb193969f67e7d8bdb5cfcc7746e51.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\c97cee7aaf0061f6a439048d555a0f8bba843ede\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1fbf3733f36fea63e70373212796e70f9079981f">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_13a848964f4a577b47543da5491896be771b98ed\classes.dex" />
     </item>
     <item
         is-multidex="false"
