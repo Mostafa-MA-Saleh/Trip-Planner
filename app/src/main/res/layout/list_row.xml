@@ -1,69 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.chauthai.swipereveallayout.SwipeRevealLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/swipeRevealLayout"
     android:layout_width="match_parent"
     android:layout_height="60dp"
-    app:dragEdge="right"
-    app:mode="same_level">
+    android:layout_marginEnd="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginStart="5dp"
+    android:layout_marginTop="5dp">
 
-    <LinearLayout
-        android:layout_width="150dp"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:weightSum="2">
-
-        <TextView
-            android:id="@+id/EditButton"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/darker_gray"
-            android:gravity="center"
-            android:text="@string/edit"
-            android:textColor="@android:color/white" />
-
-        <TextView
-            android:id="@+id/DeleteButton"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/holo_red_dark"
-            android:gravity="center"
-            android:text="@string/delete"
-            android:textColor="@android:color/white" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ActualRow"
+    <com.chauthai.swipereveallayout.SwipeRevealLayout
+        android:id="@+id/swipeRevealLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/row_background"
-        android:orientation="vertical"
-        android:transitionName="Trip"
-        android:paddingBottom="@dimen/list_row_vertical_margin"
-        android:paddingLeft="@dimen/list_row_horizontal_margin"
-        android:paddingRight="@dimen/list_row_horizontal_margin"
-        android:paddingTop="@dimen/list_row_vertical_margin"
-        android:weightSum="2">
+        app:dragEdge="right"
+        app:mode="same_level">
 
-        <TextView
-            android:id="@+id/TripName"
+        <LinearLayout
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/EditButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/darker_gray"
+                android:gravity="center"
+                android:text="@string/edit"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/DeleteButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/holo_red_dark"
+                android:gravity="center"
+                android:text="@string/delete"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ActualRow"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="bottom"
-            android:textSize="17sp"
-            android:textStyle="bold" />
+            android:background="@drawable/row_background"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/list_row_vertical_margin"
+            android:paddingLeft="@dimen/list_row_horizontal_margin"
+            android:paddingRight="@dimen/list_row_horizontal_margin"
+            android:paddingTop="@dimen/list_row_vertical_margin"
+            android:weightSum="2">
 
-        <TextView
-            android:id="@+id/TripTime"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_vertical" />
+            <TextView
+                android:id="@+id/TripName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:textIsSelectable="false"
+                android:textSize="17sp"
+                android:textStyle="bold" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/TripTime"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:textIsSelectable="false" />
 
-</com.chauthai.swipereveallayout.SwipeRevealLayout>
+        </LinearLayout>
+
+    </com.chauthai.swipereveallayout.SwipeRevealLayout>
+</android.support.v7.widget.CardView>

@@ -24,8 +24,8 @@ android {
         applicationId "com.iti.tripplanner"
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 830
-        versionName "8.3.0"
+        versionCode 832
+        versionName "8.3.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -47,12 +47,6 @@ dependencies {
     compile('com.crashlytics.sdk.android:crashlytics:2.6.7@aar') {
         transitive = true;
     }
-
-
-
-
-
-    compile 'com.android.volley:volley:1.0.0'
     compile 'com.android.support:design:25.3.0'
     compile 'com.android.support:support-v4:25.3.0'
     compile 'com.android.support:customtabs:25.3.0'
@@ -65,12 +59,14 @@ dependencies {
     compile 'com.google.android.gms:play-services-maps:10.2.0'
     compile 'com.google.android.gms:play-services-auth:10.2.0'
     //---------------------------------------------------------------
+    compile 'com.google.firebase:firebase-ads:10.2.0'
     compile 'com.google.firebase:firebase-core:10.2.0'
     compile 'com.google.firebase:firebase-auth:10.2.0'
     compile 'com.google.firebase:firebase-database:10.2.0'
-    compile 'com.google.firebase:firebase-ads:10.2.0'
+    compile 'com.google.firebase:firebase-messaging:10.2.0'
     compile 'com.google.firebase:firebase-appindexing:10.2.0'
     //---------------------------------------------------------------
+    compile 'com.android.volley:volley:1.0.0'
     compile 'com.github.vihtarb:tooltip:0.1.9'
     compile 'com.github.ViksaaSkool:AwesomeSplash:v1.0.0'
     compile 'com.facebook.android:facebook-android-sdk:4.20.0'

@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         mTripsList = (RecyclerView) findViewById(R.id.TirpsList);
         mTripsList.setLayoutManager(new LinearLayoutManager(this));
-        mTripsList.addItemDecoration(new DividerItemDecoration(mTripsList.getContext(), 1));
+        //mTripsList.addItemDecoration(new DividerItemDecoration(mTripsList.getContext(), 1));
         mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

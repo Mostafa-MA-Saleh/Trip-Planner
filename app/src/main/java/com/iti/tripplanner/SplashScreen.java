@@ -59,7 +59,7 @@ public class SplashScreen extends AwesomeSplash {
 
         configSplash.setLogoSplash(R.drawable.logo);
         configSplash.setAnimLogoSplashDuration(500);
-        configSplash.setAnimLogoSplashTechnique(Techniques.RollIn);
+        configSplash.setAnimLogoSplashTechnique(Techniques.FlipInX);
 
         configSplash.setTitleSplash("Trip Planner");
         configSplash.setTitleTextColor(android.R.color.white);

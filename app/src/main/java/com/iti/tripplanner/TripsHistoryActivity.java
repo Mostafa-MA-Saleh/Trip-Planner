@@ -50,7 +50,6 @@ public class TripsHistoryActivity extends AppCompatActivity implements OnMapRead
             @Override
             public void run() {
                 mapFragment.getMapAsync(TripsHistoryActivity.this);
-
                 mProgressDialog = new ProgressDialog(TripsHistoryActivity.this);
                 mProgressDialog.setMessage("Fetching routes, Please wait...");
                 mProgressDialog.setIndeterminate(true);

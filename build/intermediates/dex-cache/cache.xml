@@ -11,6 +11,15 @@
         <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\pre-dexed\debug\bolts-tasks-1.4.0_d48472f603a7018c3c64eafa1d8646285bad848b.jar" />
     </item>
     <item
+        is-multidex="true"
+        jar="C:\Users\Mostafa Saleh\.android\build-cache\d7827132fbffd5da701d4122e96ad51b3e114644\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="75575883f0348fc5d2be85f23bd10b050095cf17">
+        <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_66f0acb68ae5fa71f2fb71cade5f5cbb2d018f85\classes.dex" />
+    </item>
+    <item
         is-multidex="false"
         jar="C:\Users\Mostafa Saleh\.android\build-cache\da4d56b4c83fa4d6fbd094561524bd5e519e83b6\output\jars\classes.jar"
         jumboMode="false"
@@ -214,7 +223,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="881372e45e844d6e37b9d70ee4237eb6416bdd31">
+        sha1="90cefe2b0c24fdaa911e0b3f6a2cd99970ea948e">
         <dex dex="C:\Users\Mostafa Saleh\Documents\AndroidStudioProjects\Trip Planner\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_79774aa9fc28cd0c0a112cac520e4d13f4bd0e63\classes.dex" />
     </item>
     <item

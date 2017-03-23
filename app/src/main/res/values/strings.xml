@@ -46,6 +46,9 @@
     <string name="retrieve_duration_error">Unable to retrieve duration!</string>
     <string name="changelog">
         Changelog:\n\n
+        \tv8.3.2:\n
+        \t\t-Fixed Facebook login not working.\n
+        \t\t-Minor design changes.\n\n
         \tv8.3.0:\n
         \t\t-Added the option to reset a forgotten password.\n
         \t\t-Other minor improvements.\n\n
