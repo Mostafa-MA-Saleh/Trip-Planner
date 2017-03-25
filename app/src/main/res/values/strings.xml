@@ -46,6 +46,8 @@
     <string name="retrieve_duration_error">Unable to retrieve duration!</string>
     <string name="changelog">
         Changelog:\n\n
+        \tv8.3.3:\n
+        \t\t-Updated Google Play Services to 10.2.1.\n\n
         \tv8.3.2:\n
         \t\t-Fixed Facebook login not working.\n
         \t\t-Minor design changes.\n\n
