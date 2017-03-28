@@ -47,6 +47,7 @@
     <string name="changelog">
         Changelog:\n\n
         \tv8.4.0:\n
+        \t\t-Stopped the address from wrapping around inside text fields.\n
         \t\t-Moved the Save button to action bar in Trip Activity.\n
         \t\t-Removed Discard button from Trip Activity.\n\n
         \tv8.3.3:\n
