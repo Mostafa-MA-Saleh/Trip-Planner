@@ -71,8 +71,7 @@
 
         <activity
             android:name=".TripActivity"
-            android:label="@string/title_activity_trip"
-            android:windowSoftInputMode="stateHidden">
+            android:label="@string/title_activity_trip">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.iti.tripplanner.MainActivity" />

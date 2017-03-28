@@ -11,10 +11,10 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -45,7 +45,6 @@ public class TripActivity extends AppCompatActivity implements TextWatcher {
 
     private boolean mChanged;
 
-    private Button btnSave;
     private EditText txtTripName;
     private EditText txtTripStart;
     private LatLng coStart;
@@ -68,8 +67,6 @@ public class TripActivity extends AppCompatActivity implements TextWatcher {
         txtTripTime = (EditText) findViewById(R.id.TripDate);
         txtTripNotes = (EditText) findViewById(R.id.TripNotes);
         swtchRoundTrip = (Switch) findViewById(R.id.RoundTripSwitch);
-        btnSave = (Button) findViewById(R.id.SaveButton);
-        Button btnDiscard = (Button) findViewById(R.id.DiscardButton);
 
         txtTripName.addTextChangedListener(this);
         txtTripStart.addTextChangedListener(this);
@@ -118,44 +115,6 @@ public class TripActivity extends AppCompatActivity implements TextWatcher {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 return PlaceTouch(event, v);
-            }
-        });
-
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                boolean cancel = false;
-
-                if (TextUtils.isEmpty(txtTripName.getText().toString())) {
-                    txtTripName.setError(getString(R.string.error_field_required));
-                    cancel = true;
-                }
-
-                if (TextUtils.isEmpty(txtTripStart.getText().toString())) {
-                    txtTripStart.setError(getString(R.string.error_field_required));
-                    cancel = true;
-                }
-
-                if (TextUtils.isEmpty(txtTripDestination.getText().toString())) {
-                    txtTripDestination.setError(getString(R.string.error_field_required));
-                    cancel = true;
-                }
-
-                if (TextUtils.isEmpty(txtTripTime.getText().toString())) {
-                    txtTripTime.setError(getString(R.string.error_field_required));
-                    cancel = true;
-                }
-
-                if (!cancel)
-                    SaveTrip();
-            }
-        });
-
-        btnDiscard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
             }
         });
     }
@@ -240,27 +199,60 @@ public class TripActivity extends AppCompatActivity implements TextWatcher {
         trip.setRoundTrip(swtchRoundTrip.isChecked());
     }
 
-    protected void SaveTrip() {
-        setTripData();
-        if ((getIntent().getParcelableExtra("Trip")) == null) {
-            DatabaseAdapter.getInstance().insertTrip(trip);
-            trip.set_id(DatabaseAdapter.getInstance().getLastID());
-        } else {
-            DatabaseAdapter.getInstance().updateTrip(trip);
+    protected void saveTrip() {
+        boolean cancel = false;
+
+        if (TextUtils.isEmpty(txtTripName.getText().toString())) {
+            txtTripName.setError(getString(R.string.error_field_required));
+            cancel = true;
         }
-        if (trip.getTimeInMillis() > System.currentTimeMillis() && !trip.isDone())
-            trip.setAlarm(getApplicationContext());
-        Intent data = new Intent();
-        data.putExtra("Trip", trip);
-        data.putExtra("Position", getIntent().getIntExtra("Position", -1));
-        setResult(RESULT_OK, data);
-        finish();
+
+        if (TextUtils.isEmpty(txtTripStart.getText().toString())) {
+            txtTripStart.setError(getString(R.string.error_field_required));
+            cancel = true;
+        }
+
+        if (TextUtils.isEmpty(txtTripDestination.getText().toString())) {
+            txtTripDestination.setError(getString(R.string.error_field_required));
+            cancel = true;
+        }
+
+        if (TextUtils.isEmpty(txtTripTime.getText().toString())) {
+            txtTripTime.setError(getString(R.string.error_field_required));
+            cancel = true;
+        }
+
+        if (!cancel) {
+            setTripData();
+            if ((getIntent().getParcelableExtra("Trip")) == null) {
+                DatabaseAdapter.getInstance().insertTrip(trip);
+                trip.set_id(DatabaseAdapter.getInstance().getLastID());
+            } else {
+                DatabaseAdapter.getInstance().updateTrip(trip);
+            }
+            if (trip.getTimeInMillis() > System.currentTimeMillis() && !trip.isDone())
+                trip.setAlarm(getApplicationContext());
+            Intent data = new Intent();
+            data.putExtra("Trip", trip);
+            data.putExtra("Position", getIntent().getIntExtra("Position", -1));
+            setResult(RESULT_OK, data);
+            finish();
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.action_save, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             onBackPressed();
+            return true;
+        } else if (item.getItemId() == R.id.action_save) {
+            saveTrip();
             return true;
         }
         return false;
@@ -277,7 +269,7 @@ public class TripActivity extends AppCompatActivity implements TextWatcher {
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            btnSave.callOnClick();
+                            saveTrip();
                         }
                     })
                     .setNegativeButton("No", new DialogInterface.OnClickListener() {

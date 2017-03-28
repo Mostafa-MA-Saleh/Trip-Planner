@@ -46,6 +46,9 @@
     <string name="retrieve_duration_error">Unable to retrieve duration!</string>
     <string name="changelog">
         Changelog:\n\n
+        \tv8.4.0:\n
+        \t\t-Moved the Save button to action bar in Trip Activity.\n
+        \t\t-Removed Discard button from Trip Activity.\n\n
         \tv8.3.3:\n
         \t\t-Updated Google Play Services to 10.2.1.\n\n
         \tv8.3.2:\n
