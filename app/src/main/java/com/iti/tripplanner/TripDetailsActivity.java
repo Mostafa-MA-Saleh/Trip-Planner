@@ -21,7 +21,6 @@ import android.widget.TextView;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.google.firebase.auth.FirebaseAuth;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -136,10 +135,9 @@ public class TripDetailsActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (mChanged) {
             mTrip.setDone(!mTrip.isDone());
-            DBAdapter dbAdapter = new DBAdapter(FirebaseAuth.getInstance().getCurrentUser().getUid());
-            dbAdapter.updateTrip(mTrip);
+            DatabaseAdapter.getInstance().updateTrip(mTrip);
 
-            mTrip.set_id(dbAdapter.getLastID());
+            mTrip.set_id(DatabaseAdapter.getInstance().getLastID());
 
             Intent data = new Intent()
                     .putExtra("Trip", mTrip)

@@ -128,7 +128,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             mProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             mProgressDialog.setCanceledOnTouchOutside(false);
             mProgressDialog.show();
-            DBAdapter.getDatabase()
+            DatabaseAdapter
+                    .getInstance()
+                    .getDatabase()
                     .getReference(FirebaseAuth.getInstance().getCurrentUser().getUid())
                     .addValueEventListener(new ValueEventListener() {
                         @Override
@@ -143,7 +145,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                     else
                                         mCurrentTripsAdapter.add(trip, mCurrentTripsAdapter.getItemCount());
                                 } else {
-                                    DBAdapter.setLastID(postSnapshot.getValue(Integer.class) + 1);
+                                    DatabaseAdapter.setLastID(postSnapshot.getValue(Integer.class) + 1);
                                 }
                             }
                             mTripsList.setAdapter(mCurrentTripsAdapter);
@@ -244,18 +246,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_stats) {
             startActivity(new Intent(this, TripsHistoryActivity.class));
         } else if (id == R.id.nav_about) {
-            AlertDialog aboutDialog = null;
             try {
-                aboutDialog = new AlertDialog.Builder(this)
+                AlertDialog aboutDialog = new AlertDialog.Builder(this)
                         .setMessage("Current Version: " + getPackageManager().getPackageInfo(getPackageName(), 0).versionName + ".\n\n" + getString(R.string.changelog))
                         .setTitle(getString(R.string.about) + "!")
                         .setIcon(android.R.drawable.ic_dialog_info)
                         .setPositiveButton("Ok", null)
                         .show();
+                doKeepDialog(aboutDialog);
             } catch (PackageManager.NameNotFoundException e) {
                 e.printStackTrace();
             }
-            doKeepDialog(aboutDialog);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

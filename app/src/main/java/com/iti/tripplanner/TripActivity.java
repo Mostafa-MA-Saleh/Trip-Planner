@@ -27,7 +27,6 @@ import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
-import com.google.firebase.auth.FirebaseAuth;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -57,14 +56,12 @@ public class TripActivity extends AppCompatActivity implements TextWatcher {
     private Switch swtchRoundTrip;
     private String choosenDate;
     private String choosenTime;
-    private DBAdapter dbAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setResult(RESULT_CANCELED);
         setContentView(R.layout.activity_trip);
-        dbAdapter = new DBAdapter(FirebaseAuth.getInstance().getCurrentUser().getUid());
         txtTripName = (EditText) findViewById(R.id.TripName);
         txtTripStart = (EditText) findViewById(R.id.TripStart);
         txtTripDestination = (EditText) findViewById(R.id.TripDestinitaion);
@@ -246,10 +243,10 @@ public class TripActivity extends AppCompatActivity implements TextWatcher {
     protected void SaveTrip() {
         setTripData();
         if ((getIntent().getParcelableExtra("Trip")) == null) {
-            dbAdapter.insertTrip(trip);
-            trip.set_id(dbAdapter.getLastID());
+            DatabaseAdapter.getInstance().insertTrip(trip);
+            trip.set_id(DatabaseAdapter.getInstance().getLastID());
         } else {
-            dbAdapter.updateTrip(trip);
+            DatabaseAdapter.getInstance().updateTrip(trip);
         }
         if (trip.getTimeInMillis() > System.currentTimeMillis() && !trip.isDone())
             trip.setAlarm(getApplicationContext());

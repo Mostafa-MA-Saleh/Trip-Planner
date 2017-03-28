@@ -58,7 +58,9 @@ public class DialogActivity extends AppCompatActivity {
                     })
                     .show();
         } else {
-            DBAdapter.getDatabase()
+            DatabaseAdapter
+                    .getInstance()
+                    .getDatabase()
                     .getReference(FirebaseAuth.getInstance().getCurrentUser().getUid())
                     .child(String.valueOf(mTripID))
                     .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -212,8 +214,7 @@ public class DialogActivity extends AppCompatActivity {
         mNotificationManager.cancel(ALARM_NOTIFICATION_ID);
         mVibrator.cancel();
         mTrip.setDone(true);
-        DBAdapter dbAdapter = new DBAdapter(FirebaseAuth.getInstance().getCurrentUser().getUid());
-        dbAdapter.updateTrip(mTrip);
+        DatabaseAdapter.getInstance().updateTrip(mTrip);
         super.onBackPressed();
     }
 

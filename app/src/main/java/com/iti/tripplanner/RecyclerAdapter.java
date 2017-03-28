@@ -18,7 +18,6 @@ import android.widget.TextView;
 
 import com.chauthai.swipereveallayout.SwipeRevealLayout;
 import com.chauthai.swipereveallayout.ViewBinderHelper;
-import com.google.firebase.auth.FirebaseAuth;
 import com.tooltip.Tooltip;
 
 import java.util.ArrayList;
@@ -79,7 +78,7 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 mFilteredTrips.get(holder.getAdapterPosition()).cancelAlarm(mParent.getApplicationContext());
-                                new DBAdapter(FirebaseAuth.getInstance().getCurrentUser().getUid()).deleteTrip(mFilteredTrips.get(holder.getAdapterPosition()).get_id());
+                                DatabaseAdapter.getInstance().deleteTrip(mFilteredTrips.get(holder.getAdapterPosition()).get_id());
                                 remove(holder.getAdapterPosition());
                                 holder.swipeRevealLayout.close(true);
                             }

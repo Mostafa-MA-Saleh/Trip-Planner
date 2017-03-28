@@ -70,7 +70,9 @@ public class TripsHistoryActivity extends AppCompatActivity implements OnMapRead
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        DBAdapter.getDatabase()
+        DatabaseAdapter
+                .getInstance()
+                .getDatabase()
                 .getReference(FirebaseAuth.getInstance().getCurrentUser().getUid())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
