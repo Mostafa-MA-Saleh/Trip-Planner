@@ -19,18 +19,16 @@ public class BootReceiver extends BroadcastReceiver {
                     .addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                            for (DataSnapshot postSnapshot : dataSnapshot.getChildren())
                                 if (!postSnapshot.getKey().equals("Count")) {
                                     Trip trip = postSnapshot.getValue(Trip.class);
                                     if (trip.getTimeInMillis() > System.currentTimeMillis() && !trip.isDone())
                                         trip.setAlarm(context);
                                 }
-                            }
                         }
 
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
-
                         }
                     });
     }
