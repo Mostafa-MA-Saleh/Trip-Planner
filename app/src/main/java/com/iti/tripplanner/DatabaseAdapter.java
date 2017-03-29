@@ -45,7 +45,7 @@ class DatabaseAdapter {
                             if (id == null) id = 0;
                             mLastID = ++id;
                             trip.set_id(id);
-                            getDatabase().getReference(currentUser.getUid()).child("Counter").setValue(id);
+                            getDatabase().getReference(currentUser.getUid()).child("Count").setValue(id);
                             getDatabase().getReference(currentUser.getUid()).child(String.valueOf(id)).setValue(trip);
                         }
 

@@ -1,7 +1,5 @@
 package com.iti.tripplanner;
 
-import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,10 +14,8 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.CompoundButton;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Switch;
-import android.widget.TimePicker;
 
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -27,8 +23,8 @@ import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.simplicityapks.reminderdatepicker.lib.ReminderDatePicker;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -41,7 +37,6 @@ public class TripActivity extends AppCompatActivity implements TextWatcher {
     private final int DESTINATION_REQUEST_CODE = 2;
 
     private Trip trip;
-    private int _id;
 
     private boolean mChanged;
 
@@ -50,11 +45,9 @@ public class TripActivity extends AppCompatActivity implements TextWatcher {
     private LatLng coStart;
     private EditText txtTripDestination;
     private LatLng coDestination;
-    private EditText txtTripTime;
+    private ReminderDatePicker rdpTripTime;
     private EditText txtTripNotes;
     private Switch swtchRoundTrip;
-    private String choosenDate;
-    private String choosenTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,14 +57,13 @@ public class TripActivity extends AppCompatActivity implements TextWatcher {
         txtTripName = (EditText) findViewById(R.id.TripName);
         txtTripStart = (EditText) findViewById(R.id.TripStart);
         txtTripDestination = (EditText) findViewById(R.id.TripDestinitaion);
-        txtTripTime = (EditText) findViewById(R.id.TripDate);
+        rdpTripTime = (ReminderDatePicker) findViewById(R.id.TripDateTime);
         txtTripNotes = (EditText) findViewById(R.id.TripNotes);
         swtchRoundTrip = (Switch) findViewById(R.id.RoundTripSwitch);
 
         txtTripName.addTextChangedListener(this);
         txtTripStart.addTextChangedListener(this);
         txtTripDestination.addTextChangedListener(this);
-        txtTripTime.addTextChangedListener(this);
         txtTripNotes.addTextChangedListener(this);
         swtchRoundTrip.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -80,8 +72,10 @@ public class TripActivity extends AppCompatActivity implements TextWatcher {
             }
         });
 
+        rdpTripTime.setDateFormat(new SimpleDateFormat("EEEE, MMM dd, yyyy", Locale.getDefault()));
+        rdpTripTime.setTimeFormat(new SimpleDateFormat(" 'At' hh':'mm a", Locale.getDefault()));
+
         if ((trip = getIntent().getParcelableExtra("Trip")) != null) {
-            _id = trip.get_id();
             txtTripName.setText(trip.getName());
             txtTripStart.setText(trip.getStartString());
             String[] coordinates = trip.getStartCoordinates().split(",");
@@ -89,20 +83,18 @@ public class TripActivity extends AppCompatActivity implements TextWatcher {
             txtTripDestination.setText(trip.getDestinationString());
             coordinates = trip.getDestinationCoordinates().split(",");
             coDestination = new LatLng(Double.parseDouble(coordinates[0]), Double.parseDouble(coordinates[1]));
-            txtTripTime.setText(trip.getTime());
+            Calendar tripDateTime = Calendar.getInstance();
+            tripDateTime.setTimeInMillis(trip.getTimeInMillis());
+            rdpTripTime.setSelectedDate(tripDateTime);
             txtTripNotes.setText(trip.getNotes());
             swtchRoundTrip.setChecked(trip.isRoundTrip());
         } else {
             trip = new Trip();
+            rdpTripTime.setSelectedDate(Calendar.getInstance());
         }
-        mChanged = false;
 
-        txtTripTime.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return DateTimeTouch(event, v);
-            }
-        });
+
+        mChanged = false;
 
         txtTripStart.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -133,44 +125,6 @@ public class TripActivity extends AppCompatActivity implements TextWatcher {
         }
     }
 
-    protected boolean DateTimeTouch(MotionEvent event, View view) {
-        if (event.getAction() == MotionEvent.ACTION_UP) {
-            ((EditText) view).setError(null);
-            final Calendar c = Calendar.getInstance();
-            DatePickerDialog datePickerDialog = new DatePickerDialog(TripActivity.this,
-                    new DatePickerDialog.OnDateSetListener() {
-                        @Override
-                        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                            try {
-                                Date date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).parse(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
-                                choosenDate = new SimpleDateFormat("EEEE, MMM dd, yyyy", Locale.getDefault()).format(date);
-                            } catch (ParseException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
-            datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
-            TimePickerDialog timePickerDialog = new TimePickerDialog(TripActivity.this,
-                    new TimePickerDialog.OnTimeSetListener() {
-                        @Override
-                        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                            try {
-                                Date date = new SimpleDateFormat("HH:mm", Locale.getDefault()).parse(hourOfDay + ":" + minute);
-                                choosenTime = new SimpleDateFormat("hh':'mm a", Locale.getDefault()).format(date);
-                                if (!choosenDate.isEmpty() && !choosenTime.isEmpty()) {
-                                    txtTripTime.setText(choosenDate + " At " + choosenTime);
-                                }
-                            } catch (ParseException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }, c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE), false);
-            timePickerDialog.show();
-            datePickerDialog.show();
-        }
-        return false;
-    }
-
     protected boolean PlaceTouch(MotionEvent event, View view) {
         if (event.getAction() == MotionEvent.ACTION_UP) {
             ((EditText) view).setError(null);
@@ -194,7 +148,8 @@ public class TripActivity extends AppCompatActivity implements TextWatcher {
         trip.setDestinationString(txtTripDestination.getText().toString());
         if (coDestination != null)
             trip.setDestinationCoordinates(coDestination.latitude + "," + coDestination.longitude);
-        trip.setTime(txtTripTime.getText().toString());
+        Date tripDate = rdpTripTime.getSelectedDate().getTime();
+        trip.setTime(rdpTripTime.getCustomDateFormat().format(tripDate) + rdpTripTime.getTimeFormat().format(tripDate));
         trip.setNotes(txtTripNotes.getText().toString());
         trip.setRoundTrip(swtchRoundTrip.isChecked());
     }
@@ -214,11 +169,6 @@ public class TripActivity extends AppCompatActivity implements TextWatcher {
 
         if (TextUtils.isEmpty(txtTripDestination.getText().toString())) {
             txtTripDestination.setError(getString(R.string.error_field_required));
-            cancel = true;
-        }
-
-        if (TextUtils.isEmpty(txtTripTime.getText().toString())) {
-            txtTripTime.setError(getString(R.string.error_field_required));
             cancel = true;
         }
 

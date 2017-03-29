@@ -47,6 +47,7 @@
     <string name="changelog">
         Changelog:\n\n
         \tv8.4.0:\n
+        \t\t-Made entering the date of the trip simpler.\n
         \t\t-Stopped the address from wrapping around inside text fields.\n
         \t\t-Moved the Save button to action bar in Trip Activity.\n
         \t\t-Removed Discard button from Trip Activity.\n\n
@@ -154,4 +155,5 @@
     <string name="trip_name">Trip Name</string>
     <string name="forgotten_password">Forgot you password? Tap here.</string>
     <string name="reset_password">Reset Password</string>
+    <string name="date_time_label">Date/Time</string>
 </resources>

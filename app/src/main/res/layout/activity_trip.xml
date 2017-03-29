@@ -60,20 +60,53 @@
 
         </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <!--        <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            <EditText
-                android:id="@+id/TripDate"
+                    <EditText
+                        android:id="@+id/TripDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:hint="@string/date_and_time"
+                        android:inputType="datetime"
+                        android:maxLines="1" />
+
+                </android.support.design.widget.TextInputLayout>-->
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginStart="4dp"
+                android:labelFor="@+id/TripDateTime"
+                android:text="@string/date_time_label"
+                android:textColor="@color/black_overlay"
+                android:textSize="12sp" />
+
+            <com.simplicityapks.reminderdatepicker.lib.ReminderDatePicker
+                android:id="@+id/TripDateTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:focusable="false"
-                android:hint="@string/date_and_time"
-                android:inputType="datetime"
-                android:maxLines="1" />
+                android:layout_gravity="bottom" />
 
-        </android.support.design.widget.TextInputLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginStart="4dp"
+                android:background="@android:color/black" />
+
+        </FrameLayout>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
