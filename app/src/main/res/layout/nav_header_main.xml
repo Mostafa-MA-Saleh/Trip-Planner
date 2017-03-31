@@ -37,7 +37,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:contentDescription="@string/settings"
-            app:srcCompat="@drawable/ic_action_settings" />
+            android:src="@drawable/ic_settings" />
     </RelativeLayout>
 
     <TextView
