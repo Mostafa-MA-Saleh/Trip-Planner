@@ -1,12 +1,17 @@
 package com.iti.tripplanner;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SwitchCompat;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.CompoundButton;
 
 import com.google.android.gms.ads.AdRequest;
@@ -22,11 +27,23 @@ public class SettingsActivity extends AppCompatActivity {
     private RewardedVideoAd mAd;
     private ProgressDialog progressDialog;
 
+    // Prevent dialog dismiss when orientation changes
+    private static void doKeepDialog(Dialog dialog) {
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        if (dialog.getWindow() != null) {
+            lp.copyFrom(dialog.getWindow().getAttributes());
+            lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
+            lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+            dialog.getWindow().setAttributes(lp);
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         progressDialog = new ProgressDialog(this);
+        Button btnChangeLog = (Button) findViewById(R.id.btn_changelog);
         final SwitchCompat swtPremium = (SwitchCompat) findViewById(R.id.PremiumFeaturesSwitch);
         swtPremium.setChecked(mPremium);
         swtPremium.setEnabled(!mPremium);
@@ -53,6 +70,22 @@ public class SettingsActivity extends AppCompatActivity {
                                 }
                             })
                             .show();
+                }
+            }
+        });
+        btnChangeLog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    AlertDialog aboutDialog = new AlertDialog.Builder(SettingsActivity.this)
+                            .setMessage("Current Version: " + getPackageManager().getPackageInfo(getPackageName(), 0).versionName + ".\n\n" + getString(R.string.changelog))
+                            .setTitle(getString(R.string.about) + "!")
+                            .setIcon(android.R.drawable.ic_dialog_info)
+                            .setPositiveButton("Ok", null)
+                            .show();
+                    doKeepDialog(aboutDialog);
+                } catch (PackageManager.NameNotFoundException e) {
+                    e.printStackTrace();
                 }
             }
         });

@@ -2,7 +2,6 @@ package com.iti.tripplanner;
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -13,7 +12,6 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -25,7 +23,6 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -53,15 +50,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private RecyclerView mTripsList;
     private FloatingActionButton mFloatingActionButton;
     private SearchView mSearchView;
-
-    // Prevent dialog dismiss when orientation changes
-    private static void doKeepDialog(Dialog dialog) {
-        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-        lp.copyFrom(dialog.getWindow().getAttributes());
-        lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
-        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        dialog.getWindow().setAttributes(lp);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -246,17 +234,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_stats) {
             startActivity(new Intent(this, TripsHistoryActivity.class));
         } else if (id == R.id.nav_about) {
-            try {
-                AlertDialog aboutDialog = new AlertDialog.Builder(this)
-                        .setMessage("Current Version: " + getPackageManager().getPackageInfo(getPackageName(), 0).versionName + ".\n\n" + getString(R.string.changelog))
-                        .setTitle(getString(R.string.about) + "!")
-                        .setIcon(android.R.drawable.ic_dialog_info)
-                        .setPositiveButton("Ok", null)
-                        .show();
-                doKeepDialog(aboutDialog);
-            } catch (PackageManager.NameNotFoundException e) {
-                e.printStackTrace();
-            }
+            new AboutDialog(this).show();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
