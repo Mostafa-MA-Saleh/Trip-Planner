@@ -46,6 +46,8 @@
     <string name="retrieve_duration_error">Unable to retrieve duration!</string>
     <string name="changelog">
         Changelog:\n\n
+        \tv8.4.1:\n
+        \t\t-Minor UX Improvements.\n\n
         \tv8.4.0:\n
         \t\t-Made entering the date of the trip simpler.\n
         \t\t-Stopped the address from wrapping around inside text fields.\n
