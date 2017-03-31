@@ -79,7 +79,7 @@ public class SettingsActivity extends AppCompatActivity {
                 try {
                     AlertDialog aboutDialog = new AlertDialog.Builder(SettingsActivity.this)
                             .setMessage("Current Version: " + getPackageManager().getPackageInfo(getPackageName(), 0).versionName + ".\n\n" + getString(R.string.changelog))
-                            .setTitle(getString(R.string.about) + "!")
+                            .setTitle(R.string.changelog_title)
                             .setIcon(android.R.drawable.ic_dialog_info)
                             .setPositiveButton("Ok", null)
                             .show();
