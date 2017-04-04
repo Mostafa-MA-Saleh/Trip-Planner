@@ -44,7 +44,6 @@ import java.util.Arrays;
 import java.util.List;
 
 @SuppressLint("GoogleAppIndexingApiWarning")
-@SuppressWarnings("ConstantConditions")
 public class LoginActivity extends AppCompatActivity {
 
     private static final int RQST_GOOGLE_SIGN_IN = 52204;
@@ -64,6 +63,7 @@ public class LoginActivity extends AppCompatActivity {
         mProgressDialog = new Dialog(this);
         mProgressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         mProgressDialog.setContentView(new ProgressBar(this));
+        //noinspection ConstantConditions
         mProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         mProgressDialog.setCanceledOnTouchOutside(false);
         mProgressDialog.setCancelable(false);

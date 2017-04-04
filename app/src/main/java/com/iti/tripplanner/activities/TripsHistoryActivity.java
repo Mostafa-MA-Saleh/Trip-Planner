@@ -19,6 +19,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -35,7 +36,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-@SuppressWarnings("ConstantConditions")
 public class TripsHistoryActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -73,61 +73,64 @@ public class TripsHistoryActivity extends AppCompatActivity implements OnMapRead
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         mMap = googleMap;
-        DatabaseAdapter
-                .getInstance()
-                .getDatabase()
-                .getReference(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                            if (!postSnapshot.getKey().equals("Count")) {
-                                Trip trip = postSnapshot.getValue(Trip.class);
-                                mRequestQueue.add(
-                                        new JsonObjectRequest(
-                                                "https://maps.googleapis.com/maps/api/directions/json?origin="
-                                                        + trip.getStartCoordinates()
-                                                        + "&destination="
-                                                        + trip.getDestinationCoordinates()
-                                                        + "&key=AIzaSyBdKV8BgBxsEiDjArDdRRPO4xXLFbcil3Y",
-                                                null,
-                                                new Response.Listener<JSONObject>() {
-                                                    @Override
-                                                    public void onResponse(JSONObject response) {
-                                                        int colors[] = {Color.BLUE, Color.BLACK, Color.GRAY, Color.CYAN, Color.MAGENTA, Color.RED};
-                                                        Random rand = new Random();
-                                                        int randomColor = colors[rand.nextInt(colors.length)];
-                                                        drawPath(response, mMap, randomColor);
+        if (currentUser != null) {
+            DatabaseAdapter
+                    .getInstance()
+                    .getDatabase()
+                    .getReference(currentUser.getUid())
+                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                                if (!postSnapshot.getKey().equals("Count")) {
+                                    Trip trip = postSnapshot.getValue(Trip.class);
+                                    mRequestQueue.add(
+                                            new JsonObjectRequest(
+                                                    "https://maps.googleapis.com/maps/api/directions/json?origin="
+                                                            + trip.getStartCoordinates()
+                                                            + "&destination="
+                                                            + trip.getDestinationCoordinates()
+                                                            + "&key=AIzaSyBdKV8BgBxsEiDjArDdRRPO4xXLFbcil3Y",
+                                                    null,
+                                                    new Response.Listener<JSONObject>() {
+                                                        @Override
+                                                        public void onResponse(JSONObject response) {
+                                                            int colors[] = {Color.BLUE, Color.BLACK, Color.GRAY, Color.CYAN, Color.MAGENTA, Color.RED};
+                                                            Random rand = new Random();
+                                                            int randomColor = colors[rand.nextInt(colors.length)];
+                                                            drawPath(response, mMap, randomColor);
+                                                        }
+                                                    },
+                                                    new Response.ErrorListener() {
+                                                        @Override
+                                                        public void onErrorResponse(VolleyError error) {
+                                                        }
                                                     }
-                                                },
-                                                new Response.ErrorListener() {
-                                                    @Override
-                                                    public void onErrorResponse(VolleyError error) {
-                                                    }
-                                                }
-                                        )
-                                );
-                                mRequests++;
-                                String[] coordinates = trip.getStartCoordinates().split(",");
-                                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Double.parseDouble(coordinates[0]), Double.parseDouble(coordinates[1])), 10f));
+                                            )
+                                    );
+                                    mRequests++;
+                                    String[] coordinates = trip.getStartCoordinates().split(",");
+                                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Double.parseDouble(coordinates[0]), Double.parseDouble(coordinates[1])), 10f));
+                                }
                             }
+                            mRequestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+                                @Override
+                                public void onRequestFinished(Request<Object> request) {
+                                    mRequests--;
+                                    if (mRequests == 0)
+                                        mProgressDialog.dismiss();
+                                }
+                            });
                         }
-                        mRequestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
-                            @Override
-                            public void onRequestFinished(Request<Object> request) {
-                                mRequests--;
-                                if (mRequests == 0)
-                                    mProgressDialog.dismiss();
-                            }
-                        });
-                    }
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
 
-                    }
-                });
+                        }
+                    });
+        }
     }
 
     public void drawPath(JSONObject result, GoogleMap Map, int color) {

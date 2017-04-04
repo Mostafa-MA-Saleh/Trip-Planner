@@ -27,7 +27,6 @@ import com.tooltip.Tooltip;
 
 import java.util.ArrayList;
 
-@SuppressWarnings("ConstantConditions")
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
     private final ViewBinderHelper mViewBinderHelper = new ViewBinderHelper();

@@ -30,7 +30,6 @@ import com.iti.tripplanner.R;
 import com.iti.tripplanner.models.Trip;
 import com.iti.tripplanner.utilities.DatabaseAdapter;
 
-@SuppressWarnings("ConstantConditions")
 public class DialogActivity extends AppCompatActivity {
 
     private final static int ALARM_NOTIFICATION_ID = 8000;
@@ -61,6 +60,7 @@ public class DialogActivity extends AppCompatActivity {
                     })
                     .show();
         } else {
+            //noinspection ConstantConditions
             DatabaseAdapter
                     .getInstance()
                     .getDatabase()

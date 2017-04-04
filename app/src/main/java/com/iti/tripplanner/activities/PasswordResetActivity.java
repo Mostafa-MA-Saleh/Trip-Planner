@@ -24,7 +24,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.iti.tripplanner.R;
 
-@SuppressWarnings("ConstantConditions")
 public class PasswordResetActivity extends AppCompatActivity {
 
     private EditText mEmailText;
@@ -41,6 +40,7 @@ public class PasswordResetActivity extends AppCompatActivity {
         mProgressDialog = new Dialog(this);
         mProgressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         mProgressDialog.setContentView(new ProgressBar(this));
+        //noinspection ConstantConditions
         mProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         mProgressDialog.setCanceledOnTouchOutside(false);
         mProgressDialog.setCancelable(false);

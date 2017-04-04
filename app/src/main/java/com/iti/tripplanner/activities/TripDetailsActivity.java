@@ -30,7 +30,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@SuppressWarnings("ConstantConditions")
 public class TripDetailsActivity extends AppCompatActivity {
 
     private TextView txtDuration;
@@ -45,6 +44,7 @@ public class TripDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_trip_details);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        //noinspection ConstantConditions
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         duration = "";
         mTrip = getIntent().getParcelableExtra("Trip");

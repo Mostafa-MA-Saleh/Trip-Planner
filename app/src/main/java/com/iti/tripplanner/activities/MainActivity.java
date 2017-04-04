@@ -29,6 +29,7 @@ import android.widget.TextView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -65,6 +66,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
         mFloatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
 
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
         mAdView = (AdView) findViewById(R.id.adView);
         mAdView.loadAd(new AdRequest.Builder()
                 .addTestDevice("1798F5122D4DF503D56E37C2D7593933")
@@ -72,7 +75,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         mTripsList = (RecyclerView) findViewById(R.id.TirpsList);
         mTripsList.setLayoutManager(new LinearLayoutManager(this));
-        //mTripsList.addItemDecoration(new DividerItemDecoration(mTripsList.getContext(), 1));
         mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,8 +93,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setCheckedItem(R.id.nav_trips);
         ((NavigationMenuView) navigationView.getChildAt(0)).addItemDecoration(new DividerItemDecoration(MainActivity.this, DividerItemDecoration.VERTICAL));
         View navigationViewHeader = navigationView.getHeaderView(0);
-        ((TextView) navigationViewHeader.findViewById(R.id.nav_header_name)).setText(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
-        ((TextView) navigationViewHeader.findViewById(R.id.nav_header_email_address)).setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+        ((TextView) navigationViewHeader.findViewById(R.id.nav_header_name)).setText(currentUser.getDisplayName());
+        ((TextView) navigationViewHeader.findViewById(R.id.nav_header_email_address)).setText(currentUser.getEmail());
         navigationView.setOnHoverListener(new View.OnHoverListener() {
             @Override
             public boolean onHover(View v, MotionEvent event) {
@@ -128,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             DatabaseAdapter
                     .getInstance()
                     .getDatabase()
-                    .getReference(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                    .getReference(currentUser.getUid())
                     .addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
@@ -156,12 +158,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     });
         } else {
             ArrayList<Trip> trips = savedInstanceState.getParcelableArrayList("CurrentTrips");
-            for (Trip trip : trips) {
-                mCurrentTripsAdapter.add(trip, mCurrentTripsAdapter.getItemCount());
+            if (trips != null) {
+                for (Trip trip : trips) {
+                    mCurrentTripsAdapter.add(trip, mCurrentTripsAdapter.getItemCount());
+                }
             }
             trips = savedInstanceState.getParcelableArrayList("PreviousTrips");
-            for (Trip trip : trips) {
-                mPreviousTripsAdapter.add(trip, mPreviousTripsAdapter.getItemCount());
+            if (trips != null) {
+                for (Trip trip : trips) {
+                    mPreviousTripsAdapter.add(trip, mPreviousTripsAdapter.getItemCount());
+                }
             }
             getSupportActionBar().setSubtitle(savedInstanceState.getString("Subtitle", ""));
             mTripsList.setAdapter(getSupportActionBar().getSubtitle().equals("Finished Trips") ? mPreviousTripsAdapter : mCurrentTripsAdapter);

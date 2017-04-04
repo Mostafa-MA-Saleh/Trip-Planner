@@ -33,7 +33,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-@SuppressWarnings("ConstantConditions")
 public class TripActivity extends AppCompatActivity implements TextWatcher {
 
     private final int START_REQUEST_CODE = 1;

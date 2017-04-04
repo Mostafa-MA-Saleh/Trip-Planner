@@ -22,10 +22,10 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.iti.tripplanner.R;
 
-@SuppressWarnings("ConstantConditions")
 public class RegistrationActivity extends AppCompatActivity implements View.OnFocusChangeListener {
 
     private FirebaseAuth mAuth;
@@ -46,6 +46,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnFo
         mProgressDialog = new Dialog(this);
         mProgressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         mProgressDialog.setContentView(new ProgressBar(this));
+        //noinspection ConstantConditions
         mProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         mProgressDialog.setCanceledOnTouchOutside(false);
         mProgressDialog.setCancelable(false);
@@ -118,19 +119,22 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnFo
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     mProgressDialog.dismiss();
                                     if (task.isSuccessful()) {
-                                        FirebaseAuth.getInstance().getCurrentUser().updateProfile(new UserProfileChangeRequest.Builder()
-                                                .setDisplayName(fullName).build());
-                                        new AlertDialog.Builder(RegistrationActivity.this)
-                                                .setTitle("Registration Successful!")
-                                                .setMessage("Thank you for registering...")
-                                                .setCancelable(false)
-                                                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                                    @Override
-                                                    public void onClick(DialogInterface dialog, int which) {
-                                                        finish();
-                                                    }
-                                                })
-                                                .show();
+                                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                        if (user != null) {
+                                            user.updateProfile(new UserProfileChangeRequest.Builder()
+                                                    .setDisplayName(fullName).build());
+                                            new AlertDialog.Builder(RegistrationActivity.this)
+                                                    .setTitle("Registration Successful!")
+                                                    .setMessage("Thank you for registering...")
+                                                    .setCancelable(false)
+                                                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(DialogInterface dialog, int which) {
+                                                            finish();
+                                                        }
+                                                    })
+                                                    .show();
+                                        }
                                     }
                                 }
                             })
