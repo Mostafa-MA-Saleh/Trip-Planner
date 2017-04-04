@@ -1,4 +1,4 @@
-package com.iti.tripplanner;
+package com.iti.tripplanner.dialogs;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.widget.TextView;
 
-class AboutDialog extends Dialog {
+import com.iti.tripplanner.R;
 
-    AboutDialog(@NonNull Context context) {
+public class AboutDialog extends Dialog {
+
+    public AboutDialog(@NonNull Context context) {
         super(context);
     }
 

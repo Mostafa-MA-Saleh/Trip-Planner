@@ -1,4 +1,4 @@
-package com.iti.tripplanner;
+package com.iti.tripplanner.utilities;
 
 import android.app.Activity;
 import android.content.DialogInterface;
@@ -18,19 +18,24 @@ import android.widget.TextView;
 
 import com.chauthai.swipereveallayout.SwipeRevealLayout;
 import com.chauthai.swipereveallayout.ViewBinderHelper;
+import com.iti.tripplanner.R;
+import com.iti.tripplanner.activities.MainActivity;
+import com.iti.tripplanner.activities.TripActivity;
+import com.iti.tripplanner.activities.TripDetailsActivity;
+import com.iti.tripplanner.models.Trip;
 import com.tooltip.Tooltip;
 
 import java.util.ArrayList;
 
 @SuppressWarnings("ConstantConditions")
-class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
+public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
     private final ViewBinderHelper mViewBinderHelper = new ViewBinderHelper();
     private Activity mParent;
 
     private ArrayList<Trip> mFilteredTrips, mTrips;
 
-    RecyclerAdapter(Activity parent) {
+    public RecyclerAdapter(Activity parent) {
         mFilteredTrips = new ArrayList<>();
         mTrips = new ArrayList<>();
         mViewBinderHelper.setOpenOnlyOne(true);
@@ -138,7 +143,7 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
         });
     }
 
-    void filter(final String filter) {
+    public void filter(final String filter) {
 
         new Thread(new Runnable() {
             @Override
@@ -163,30 +168,30 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
     }
 
-    void remove(int position) {
+    public void remove(int position) {
         mFilteredTrips.remove(position);
         mTrips.remove(position);
         notifyItemRemoved(position);
     }
 
-    void add(Trip trip, int position) {
+    public void add(Trip trip, int position) {
         mFilteredTrips.add(position, trip);
         mTrips.add(position, trip);
         notifyItemInserted(position);
     }
 
-    void update(Trip trip, int position) {
+    public void update(Trip trip, int position) {
         mFilteredTrips.set(position, trip);
         mTrips.set(position, trip);
         notifyItemChanged(position);
     }
 
-    void clear() {
+    public void clear() {
         mFilteredTrips.clear();
         mTrips.clear();
     }
 
-    ArrayList<Trip> getAllElements() {
+    public ArrayList<Trip> getAllElements() {
         return mFilteredTrips;
     }
 

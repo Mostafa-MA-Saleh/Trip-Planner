@@ -1,4 +1,4 @@
-package com.iti.tripplanner;
+package com.iti.tripplanner.activities;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -22,6 +22,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.iti.tripplanner.R;
 
 @SuppressWarnings("ConstantConditions")
 public class PasswordResetActivity extends AppCompatActivity {

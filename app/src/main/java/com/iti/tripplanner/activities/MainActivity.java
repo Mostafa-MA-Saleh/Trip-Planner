@@ -1,4 +1,4 @@
-package com.iti.tripplanner;
+package com.iti.tripplanner.activities;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -32,6 +32,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
+import com.iti.tripplanner.R;
+import com.iti.tripplanner.dialogs.AboutDialog;
+import com.iti.tripplanner.dialogs.RateMeMaybe;
+import com.iti.tripplanner.models.Trip;
+import com.iti.tripplanner.utilities.DatabaseAdapter;
+import com.iti.tripplanner.utilities.RecyclerAdapter;
 
 import java.util.ArrayList;
 
@@ -110,6 +116,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mCurrentTripsAdapter = new RecyclerAdapter(this);
         mPreviousTripsAdapter = new RecyclerAdapter(this);
         if (savedInstanceState == null) {
+            RateMeMaybe rmm = new RateMeMaybe(this);
+            rmm.setPromptMinimums(10, 7, 10, 10);
+            rmm.run();
             final Dialog mProgressDialog = new Dialog(this);
             mProgressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             mProgressDialog.setContentView(new ProgressBar(this));

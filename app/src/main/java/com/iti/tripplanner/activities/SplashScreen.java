@@ -1,4 +1,4 @@
-package com.iti.tripplanner;
+package com.iti.tripplanner.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -8,6 +8,7 @@ import com.crashlytics.android.Crashlytics;
 import com.daimajia.androidanimations.library.Techniques;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
+import com.iti.tripplanner.R;
 import com.viksaa.sssplash.lib.activity.AwesomeSplash;
 import com.viksaa.sssplash.lib.cnst.Flags;
 import com.viksaa.sssplash.lib.model.ConfigSplash;

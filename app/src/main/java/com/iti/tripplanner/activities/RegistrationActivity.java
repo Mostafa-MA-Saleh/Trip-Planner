@@ -1,4 +1,4 @@
-package com.iti.tripplanner;
+package com.iti.tripplanner.activities;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -23,6 +23,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.iti.tripplanner.R;
 
 @SuppressWarnings("ConstantConditions")
 public class RegistrationActivity extends AppCompatActivity implements View.OnFocusChangeListener {

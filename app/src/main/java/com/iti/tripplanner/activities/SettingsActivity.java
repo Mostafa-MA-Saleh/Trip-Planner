@@ -1,4 +1,4 @@
-package com.iti.tripplanner;
+package com.iti.tripplanner.activities;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -19,6 +19,7 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
+import com.iti.tripplanner.R;
 
 public class SettingsActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.iti.tripplanner;
+package com.iti.tripplanner.utilities;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -6,8 +6,10 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.iti.tripplanner.models.Trip;
 
-class DatabaseAdapter {
+@SuppressWarnings("WeakerAccess")
+public class DatabaseAdapter {
 
     private static int mLastID;
     private static DatabaseAdapter mInstance;
@@ -32,7 +34,7 @@ class DatabaseAdapter {
         return mDatabase;
     }
 
-    void insertTrip(final Trip trip) {
+    public void insertTrip(final Trip trip) {
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
         if (currentUser != null) {
             getDatabase()
@@ -57,7 +59,7 @@ class DatabaseAdapter {
         }
     }
 
-    void deleteTrip(int _id) {
+    public void deleteTrip(int _id) {
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
         getDatabase()
                 .getReference(currentUser.getUid())
@@ -65,7 +67,7 @@ class DatabaseAdapter {
                 .removeValue();
     }
 
-    void updateTrip(Trip trip) {
+    public void updateTrip(Trip trip) {
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
         getDatabase()
                 .getReference(currentUser.getUid())
@@ -73,11 +75,11 @@ class DatabaseAdapter {
                 .setValue(trip);
     }
 
-    int getLastID() {
+    public int getLastID() {
         return mLastID;
     }
 
-    static void setLastID(int LastID) {
+    public static void setLastID(int LastID) {
         DatabaseAdapter.mLastID = LastID;
     }
 

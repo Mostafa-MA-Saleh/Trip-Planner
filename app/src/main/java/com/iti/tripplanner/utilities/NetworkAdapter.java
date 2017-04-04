@@ -1,15 +1,15 @@
-package com.iti.tripplanner;
+package com.iti.tripplanner.utilities;
 
 import android.content.Context;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
-class NetworkAdapter {
+public class NetworkAdapter {
 
     private static RequestQueue mRequestQueue;
 
-    static RequestQueue getRequestQueue(Context context) {
+    public static RequestQueue getRequestQueue(Context context) {
         if (mRequestQueue == null)
             mRequestQueue = Volley.newRequestQueue(context);
         return mRequestQueue;

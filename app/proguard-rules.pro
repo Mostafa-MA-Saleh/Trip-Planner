@@ -16,4 +16,4 @@
 #   public *;
 #}
 -keepattributes *Annotation*,Signature
--keep class com.iti.tripplanner.Trip.** { *; }
+-keep class com.iti.tripplanner.Models.Trip.** { *; }

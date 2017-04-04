@@ -1,4 +1,4 @@
-package com.iti.tripplanner;
+package com.iti.tripplanner.activities;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -26,6 +26,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
+import com.iti.tripplanner.R;
+import com.iti.tripplanner.models.Trip;
+import com.iti.tripplanner.utilities.DatabaseAdapter;
 
 @SuppressWarnings("ConstantConditions")
 public class DialogActivity extends AppCompatActivity {

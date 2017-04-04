@@ -1,4 +1,4 @@
-package com.iti.tripplanner;
+package com.iti.tripplanner.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -23,6 +23,9 @@ import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.iti.tripplanner.R;
+import com.iti.tripplanner.models.Trip;
+import com.iti.tripplanner.utilities.DatabaseAdapter;
 import com.simplicityapks.reminderdatepicker.lib.ReminderDatePicker;
 
 import java.text.SimpleDateFormat;

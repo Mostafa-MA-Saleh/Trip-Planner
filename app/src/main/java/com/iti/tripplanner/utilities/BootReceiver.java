@@ -1,4 +1,4 @@
-package com.iti.tripplanner;
+package com.iti.tripplanner.utilities;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -9,6 +9,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
+import com.iti.tripplanner.models.Trip;
 
 @SuppressWarnings("ConstantConditions")
 public class BootReceiver extends BroadcastReceiver {

@@ -1,4 +1,4 @@
-package com.iti.tripplanner;
+package com.iti.tripplanner.activities;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
@@ -38,6 +38,7 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.iti.tripplanner.R;
 
 import java.util.Arrays;
 import java.util.List;

@@ -41,6 +41,8 @@
     <string name="retrieve_duration_error">Unable to retrieve duration!</string>
     <string name="changelog">
         Changelog:\n\n
+        \tv8.4.3:\n
+        \t\t-Added a rating dialog.\n\n
         \tv8.4.2:\n
         \t\t-Added a new about dialog.\n
         \t\t-Moved the changelog to settings.\n\n
@@ -159,6 +161,6 @@
     <string name="website_url">https://www.linkedin.com/in/mostafa-saleh/</string>
     <string name="legal_notice">Not liable for any damage incurred from use of this software including but not limited to: monetary loss, temporary paralysis, halitosis, spontaneous combustion, road rash, and or premature hair loss.</string>
     <string name="phone_number">+201062182654</string>
-    <string name="app_version">Version: 8.4.2</string>
+    <string name="app_version">Version: 8.4.3</string>
     <string name="header_background">Header Background</string>
 </resources>

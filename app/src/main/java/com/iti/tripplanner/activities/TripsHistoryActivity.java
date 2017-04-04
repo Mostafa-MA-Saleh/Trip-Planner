@@ -1,4 +1,4 @@
-package com.iti.tripplanner;
+package com.iti.tripplanner.activities;
 
 import android.app.ProgressDialog;
 import android.graphics.Color;
@@ -22,6 +22,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
+import com.iti.tripplanner.R;
+import com.iti.tripplanner.models.Trip;
+import com.iti.tripplanner.utilities.DatabaseAdapter;
+import com.iti.tripplanner.utilities.NetworkAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;

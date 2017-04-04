@@ -1,4 +1,4 @@
-package com.iti.tripplanner;
+package com.iti.tripplanner.activities;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -21,6 +21,10 @@ import android.widget.TextView;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.iti.tripplanner.R;
+import com.iti.tripplanner.models.Trip;
+import com.iti.tripplanner.utilities.DatabaseAdapter;
+import com.iti.tripplanner.utilities.NetworkAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;

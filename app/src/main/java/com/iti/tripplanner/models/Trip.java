@@ -1,4 +1,4 @@
-package com.iti.tripplanner;
+package com.iti.tripplanner.models;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -10,15 +10,15 @@ import android.os.Parcelable;
 import android.support.annotation.Keep;
 
 import com.google.android.gms.maps.model.LatLng;
+import com.iti.tripplanner.activities.DialogActivity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-@SuppressWarnings("WeakerAccess")
 @Keep
-class Trip implements Parcelable {
+public class Trip implements Parcelable {
 
     public static final Parcelable.Creator<Trip> CREATOR = new Parcelable.Creator<Trip>() {
         @Override

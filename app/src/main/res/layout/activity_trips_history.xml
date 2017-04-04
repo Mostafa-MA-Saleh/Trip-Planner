@@ -4,12 +4,12 @@
     android:id="@+id/activity_stats"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.iti.tripplanner.TripsHistoryActivity">
+    tools:context="com.iti.tripplanner.activities.TripsHistoryActivity">
 
     <fragment
+        android:id="@+id/Map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/Map" />
+        android:layout_height="match_parent" />
 
 </RelativeLayout>
