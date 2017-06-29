@@ -32,7 +32,7 @@ import com.iti.tripplanner.utilities.DatabaseAdapter;
 
 public class DialogActivity extends AppCompatActivity {
 
-    private final static int ALARM_NOTIFICATION_ID = 8000;
+    private final static int ALARM_NOTIFICATION_ID = 0;
 
     private Ringtone mAlarm;
     private Vibrator mVibrator;
